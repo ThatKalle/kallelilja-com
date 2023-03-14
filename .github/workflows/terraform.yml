@@ -11,6 +11,9 @@ on:
     paths:
       - 'terraform/**.tf'
 
+permissions:
+  contents: read
+
 jobs:
   terraform-ci:
     name: "Terraform CI"
