@@ -10,8 +10,14 @@ updates:
     schedule:
       interval: "weekly"
       day: "tuesday"
+    allow:
+      - dependency-name: *
+        dependency-type: "direct"
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
       interval: "weekly"
       day: "tuesday"
+    allow:
+      - dependency-name: *
+        dependency-type: "direct"
