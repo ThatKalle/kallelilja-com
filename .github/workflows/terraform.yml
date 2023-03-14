@@ -122,7 +122,7 @@ jobs:
         run: exit 1
 
       - name: Upload tfplan
-        if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+        if: github.ref == 'refs/heads/main' && (github.event_name == 'push' || github.event_name == 'workflow_dispatch')
         uses: actions/upload-artifact@v3
         with:
           name: tfplan
@@ -132,7 +132,7 @@ jobs:
   deploy:
     name: "Terraform Deploy"
     needs: terraform-ci
-    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    if: github.ref == 'refs/heads/main' && (github.event_name == 'push' || github.event_name == 'workflow_dispatch')
     runs-on: ubuntu-latest
     permissions:
       contents: read
