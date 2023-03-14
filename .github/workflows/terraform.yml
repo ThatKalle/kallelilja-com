@@ -1,5 +1,7 @@
 name: Terraform
 
+concurrency: production
+
 on:
   workflow_dispatch:
   push:
@@ -134,6 +136,9 @@ jobs:
 
   deploy:
     name: "Terraform Deploy"
+    environment:
+      name: 'production'
+      url: 'https://kallelilja.com'
     needs: terraform-ci
     if: github.ref == 'refs/heads/main' && (github.event_name == 'push' || github.event_name == 'workflow_dispatch')
     runs-on: ubuntu-latest
