@@ -126,7 +126,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: tfplan
-          path: ${{ env.working-directory }}
+          path: ${{ env.working-directory }}/tfplan
           retention-days: 1
 
   deploy:
