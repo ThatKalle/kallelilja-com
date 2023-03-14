@@ -63,9 +63,11 @@ jobs:
         id: tfsec
         uses: aquasecurity/tfsec-pr-commenter-action@v1.3.1
         with:
-          tfsec_args: --soft-fail
+          tfsec_version: v1.28.1
+          # tfsec_args: --soft-fail
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          working_directory: ${{ env.working-directory }}
+          # working_directory: ${{ env.working-directory }}
+          working_directory: ''  # https://github.com/aquasecurity/tfsec-pr-commenter-action/issues/90
 
       - name: Terraform Plan
         id: plan
@@ -121,7 +123,7 @@ jobs:
         run: exit 1
 
       - name: Upload tfplan
-        if: github.ref == 'refs/heads/main' & github.event_name == 'push'
+        if: github.ref == 'refs/heads/main' && github.event_name == 'push'
         uses: actions/upload-artifact@v3
         with:
           name: tfplan
@@ -135,7 +137,6 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
-      pull-requests: write
     env:
       working-directory: ./terraform
     defaults:
