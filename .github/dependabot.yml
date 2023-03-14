@@ -5,7 +5,7 @@
 
 version: 2
 updates:
-  - package-ecosystem: ""Terraform
+  - package-ecosystem: "Terraform"
     directory: "/terraform"
     schedule:
       interval: "weekly"
