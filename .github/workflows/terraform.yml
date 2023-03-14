@@ -64,7 +64,7 @@ jobs:
         uses: aquasecurity/tfsec-pr-commenter-action@v1.3.1
         with:
           tfsec_version: v1.28.1
-          tfsec_args: --soft-fail
+          # tfsec_args: --soft-fail
           github_token: ${{ secrets.GITHUB_TOKEN }}
           working_directory: ${{ env.working-directory }}
 
