@@ -126,7 +126,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: tfplan
-          path: tfplan
+          path: ${{ env.working-directory }}
           retention-days: 1
 
   deploy:
@@ -153,7 +153,7 @@ jobs:
       - uses: actions/download-artifact@v3
         with:
           name: tfplan
-          path: tfplan
+          path: ${{ env.working-directory }}
 
       - name: test
         run: terraform --version
