@@ -67,6 +67,7 @@ jobs:
           # tfsec_args: --soft-fail
           github_token: ${{ secrets.GITHUB_TOKEN }}
           # working_directory: ${{ env.working-directory }}
+          working_directory: ''
 
       - name: Terraform Plan
         id: plan
