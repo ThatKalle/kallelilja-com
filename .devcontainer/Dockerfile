@@ -2,6 +2,8 @@ FROM mcr.microsoft.com/devcontainers/base:bookworm
 
 ENV DOCKERIZE_VERSION=v0.9.2
 
+ENV HUGO_PARAMS_gitCommit="d3m0sh4"
+
 USER root
 
 RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \

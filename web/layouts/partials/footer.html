@@ -1,7 +1,8 @@
 <footer class="footer">
-    {{if or (.Site.Params.footer.trademark) (.Site.Params.footer.author) (.Site.Params.footer.copyright) (.Site.Params.footer.rss) (.Site.Params.footer.topText) }}
+    {{if or (.Site.Params.footer.git) (.Site.Params.footer.trademark) (.Site.Params.footer.author) (.Site.Params.footer.copyright) (.Site.Params.footer.rss) (.Site.Params.footer.topText) }}
     <div class="footer__inner">
         <div class="footer__content">
+            {{ if .Site.Params.footer.git }}<span>Build: <a href="{{ .Site.Params.gitUrl -}}{{ .Site.Params.gitCommit }}" target="_blank" rel="noopener">{{ .Site.Params.gitCommit }}</a></span>{{ end }}
             {{ if .Site.Params.footer.trademark }}<span>&copy; {{ .Site.Params.footer.trademark }}</span>{{ end }}
             {{ if .Site.Params.footer.author }}<span><a href="{{ .Site.BaseURL }}">{{ .Site.Params.Author.name }}</a></span>{{ end }}
             {{ if .Site.Params.footer.copyright }}<span>{{ .Site.Copyright| safeHTML }}</span>{{ end }}
