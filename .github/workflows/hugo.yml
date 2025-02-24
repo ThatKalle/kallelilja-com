@@ -27,6 +27,11 @@ jobs:
     env:
       HUGO_VERSION: 0.144.2
     steps:
+      - name: Github SHA
+        run: |
+          echo "GIT_COMMIT_SHA=$("${{ github.sha }}".SubString(0, 8))" >> $env:GITHUB_ENV
+          echo "GIT_COMMIT_SHA_SHORT=$("${{ github.sha }}"" >> $env:GITHUB_ENV
+
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@75d2e84710de30f6ff7268e08f310b60ef14033f # v3.0.0
         with:
