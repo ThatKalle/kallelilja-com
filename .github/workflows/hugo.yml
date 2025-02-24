@@ -52,6 +52,7 @@ jobs:
           hugo \
             --gc \
             --minify \
+            --enableGitInfo \
             --baseURL "${{ vars.GHPAGES_URL }}"
         working-directory: web
 
