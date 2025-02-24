@@ -56,7 +56,7 @@
 		}
 	},
 
-	"postCreateCommand": "sudo chown -R vscode /workspaces",
+	"postCreateCommand": "bash .devcontainer/postCreateCommand.sh",
 	
-	"postStartCommand": "cd web/ && nohup hugo server --baseURL localhost --poll 500ms & dockerize -wait tcp://localhost:1313 -timeout 30s"
+	"postStartCommand": "bash .devcontainer/postStartCommand.sh"
 }
