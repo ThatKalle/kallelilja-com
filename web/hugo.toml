@@ -18,7 +18,7 @@ buildExpired = false
 canonifyURLs = true
 
 enableRobotsTXT = true
-enableGitInfo   = false
+enableGitInfo   = true
 enableEmoji     = true
 enableMissingTranslationPlaceholders = false
 disableRSS     = true
@@ -73,7 +73,7 @@ disableHugoGeneratorInject = false
 
   # Prefix of link to the git commit detail page. GitInfo must be enabled.
   #
-  # gitUrl = ""
+  gitUrl = "https://github.com/ThatKalle/kallelilja-com/commit/"
 
   # Set disableReadOtherPosts to true in order to hide the links to other posts.
   #
@@ -121,6 +121,8 @@ disableHugoGeneratorInject = false
   # Custom footer 
   # If you want, you can easily override the default footer with your own content. 
   #
+  [params.footer]
+    git = true
 #   [params.footer]
 #     trademark = 2023
 #     rss = true
