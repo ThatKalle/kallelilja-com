@@ -48,7 +48,11 @@
 			"unwantedRecommendations": [
 				"ms-azuretools.vscode-azureterraform"
 			],
-			"settings": {}
+			"settings": {
+				"files.associations": {
+					"**.hcl": "terraform"
+				}
+			}
 		}
 	},
 
