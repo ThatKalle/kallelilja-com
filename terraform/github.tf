@@ -65,13 +65,13 @@ resource "github_repository_environment" "production" {
 }
 
 resource "github_repository_deployment_branch_policy" "production" {
-  depends_on = [
-    github_repository_environment.production
-  ]
-
   repository       = github_repository.kallelilja_com.name
   environment_name = github_repository_environment.production.environment
   name             = "main"
+
+  depends_on = [
+    github_repository_environment.production
+  ]
 }
 
 resource "github_actions_environment_variable" "ghpages_url_production" {
@@ -79,4 +79,19 @@ resource "github_actions_environment_variable" "ghpages_url_production" {
   environment   = github_repository_environment.production.environment
   variable_name = "ghpages_url"
   value         = "https://kallelilja.com"
+}
+
+resource "github_actions_repository_permissions" "kallelilja_com" {
+  repository      = github_repository.kallelilja_com.name
+  enabled         = true
+  allowed_actions = "selected"
+  
+  allowed_actions_config {
+    github_owned_allowed = true
+    verified_allowed     = false
+    patterns_allowed = [
+      "peaceiris/actions-hugo@*",
+      "hashicorp/setup-terraform@*",
+    ]
+  }
 }
