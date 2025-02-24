@@ -9,5 +9,8 @@
         "kaellarkin.hugo-shortcode-syntax",
         "tamasfe.even-better-toml",
         "davidanson.vscode-markdownlint"
+    ],
+    "unwantedRecommendations": [
+        "ms-azuretools.vscode-azureterraform"
     ]
 }
