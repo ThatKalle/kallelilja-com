@@ -7,11 +7,13 @@ resource "github_repository" "kallelilja_com" {
   name         = "kallelilja-com"
   description  = "Personal site of Kallelilja"
   homepage_url = "https://kallelilja.com"
+  #tfsec:ignore:github-repositories-private
   visibility   = "public"
 
   has_issues   = false
   has_wiki     = false
   has_projects = false
+  vulnerability_alerts = true
 
   pages {
     build_type = "workflow"

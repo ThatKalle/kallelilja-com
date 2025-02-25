@@ -1,5 +1,6 @@
 {
     "files.associations": {
         "**.hcl": "terraform"
-    }
+    },
+    "extensions.ignoreRecommendations": true
 }

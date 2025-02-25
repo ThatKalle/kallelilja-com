@@ -11,6 +11,7 @@
         "davidanson.vscode-markdownlint"
     ],
     "unwantedRecommendations": [
-        "ms-azuretools.vscode-azureterraform"
+        "ms-azuretools.vscode-azureterraform",
+        "tfsec.tfsec"
     ]
 }

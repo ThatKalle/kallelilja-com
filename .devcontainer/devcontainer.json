@@ -21,6 +21,9 @@
 			"version": "latest",
 			"tflint": "latest",
 			"terragrunt": "none"
+		},
+		"ghcr.io/devcontainers-extra/features/tfsec:1": {
+			"version": "latest"
 		}
 	},
 
@@ -43,15 +46,15 @@
 				"kaellarkin.hugo-tags-helper",
 				"kaellarkin.hugo-shortcode-syntax",
 				"tamasfe.even-better-toml",
-				"davidanson.vscode-markdownlint"
-			],
-			"unwantedRecommendations": [
-				"ms-azuretools.vscode-azureterraform"
+				"davidanson.vscode-markdownlint",
+				"-ms-azuretools.vscode-azureterraform",
+				"-tfsec.tfsec"
 			],
 			"settings": {
 				"files.associations": {
 					"**.hcl": "terraform"
-				}
+				},
+				"extensions.ignoreRecommendations": true
 			}
 		}
 	},
