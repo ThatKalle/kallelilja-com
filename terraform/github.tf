@@ -8,11 +8,11 @@ resource "github_repository" "kallelilja_com" {
   description  = "Personal site of Kallelilja"
   homepage_url = "https://kallelilja.com"
   #tfsec:ignore:github-repositories-private
-  visibility   = "public"
+  visibility = "public"
 
-  has_issues   = false
-  has_wiki     = false
-  has_projects = false
+  has_issues           = false
+  has_wiki             = false
+  has_projects         = false
   vulnerability_alerts = true
 
   pages {
