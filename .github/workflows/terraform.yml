@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       do-apply:
-        description: Perform `terrafrom apply` command?
+        description: Perform `terraform apply` command?
         type: boolean
         required: true
   push:
@@ -58,7 +58,4 @@ jobs:
       - name: Terraform Apply
         if: (github.ref == 'refs/heads/main' && github.event_name == 'push') || (github.ref == 'refs/heads/main' && github.event_name == 'workflow_dispatch' && github.event.inputs.do-apply == 'true')
         run: terraform apply -auto-approve -input=false
-
-
-
         
