@@ -1,0 +1,96 @@
+name: '🩺 HUGO - Continuous Integration (CI)'
+
+on:
+  pull_request:
+    paths: 
+      - 'web/**'
+  workflow_call:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  hugo-ci:
+    name: 'HUGO CI'
+    runs-on: ubuntu-latest
+  
+    defaults:
+      run:
+        shell: bash
+        working-directory: web
+    
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+
+      - name: Save git sha
+        id: git-sha
+        run: echo "output=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
+
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@75d2e84710de30f6ff7268e08f310b60ef14033f # v3.0.0
+        with:
+          hugo-version: '0.145.0'
+          extended: true
+
+      - name: Build Hugo site for audit
+        run: |
+          hugo \
+           --destination "${OUTPUT_DIRECTORY}" \
+           --gc \
+           --cleanDestinationDir
+          if [ ! -s "${OUTPUT_DIRECTORY}"/index.html ]; then
+            echo "Missing output"
+            exit 1
+          fi
+        env:
+          HUGO_CACHEDIR: ${{ runner.temp }}/hugo_cache
+          HUGO_ENVIRONMENT: production
+          TZ: Europe/Stockholm
+          HUGO_PARAMS_gitCommit: ${{ steps.git-sha.outputs.output }}
+          OUTPUT_DIRECTORY: "audit/"
+          HUGO_ENABLEMISSINGTRANSLATIONPLACEHOLDERS: true
+          HUGO_MINIFY_TDEWOLFF_HTML_KEEPCOMMENTS: true
+          
+      - name: Audit Hugo site (step 1)
+        run: |
+          if ! grep -iIrnE '<\!-- raw HTML omitted -->|ZgotmplZ|hahahugo|\[i18n\]|\(<nil>\)|\(&lt;nil&gt;\)' ${OUTPUT_DIRECTORY} > hugo-audit.log; then
+            RET=$?
+          fi
+          if test "$RET" = "2"; then
+            echo "not ok"
+            exit 1
+          fi
+        env:
+          OUTPUT_DIRECTORY: "audit/"
+      
+      - name: Audit Hugo site (step 2)
+        id: audit
+        run: |
+          if test -s hugo-audit.log; then
+            RET2=2
+            { {
+              grep -iIvE 'grep(.+(-- raw HTML omitted --|ZgotmplZ|hahahugo|\\\[i18n\\\]|\\\(<nil>\\\)|\\\(&lt;nil&gt;\\\))+)' hugo-audit.log
+              RET2=$?
+            } || true; }
+            if test "$RET2" != "1"; then
+              echo "not ok"
+              exit 1
+            fi
+          else
+            echo "ok"
+            exit 0
+          fi
+
+      - name: Add hugo-audit.log to artifact
+        if: failure() && steps.audit.conclusion == 'failure'
+        run: |
+          mv hugo-audit.log audit/hugo-audit.log
+
+      - name: Upload Audit artifact
+        if: failure() && steps.audit.conclusion == 'failure'
+        uses: actions/upload-pages-artifact@56afc609e74202658d3ffba0e8f6dda462b719fa # v3.0.1
+        with:
+          path: web/audit
+          name: github-pages-audit
