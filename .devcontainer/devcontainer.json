@@ -1,8 +1,14 @@
 {
-	"name": "kallelilja-com Dev",
+	"name": "kallelilja-com Devcontainer",
 
 	"build": {
-		"dockerfile": "Dockerfile"
+		"dockerfile": "Dockerfile",
+		"args": {
+			"DOCKERIZE_VERSION": "v0.9.2",
+			"DOCKERIZE_CHECKSUM": "5f65a8504cf3334ff1ee0e8b89a453d48fcb0223bf6c9cd2faf8a4f373119566",
+			"TFPROVIDERCHECK_VERSION": "v1.0.2",
+			"TFPROVIDERCHECK_CHECKSUM": "958f9779a551cdb5cb4f205694760c3b569466f295d5cf345f30074970107444"
+		}
 	},
 
 	"runArgs": [
@@ -14,7 +20,7 @@
 
 	"features": {
 		"ghcr.io/devcontainers/features/hugo:1": {
-			"version": "0.144.2",
+			"version": "0.145.0",
 			"extended": true
 		},
 		"ghcr.io/devcontainers/features/terraform:1": {
@@ -22,7 +28,7 @@
 			"tflint": "latest",
 			"terragrunt": "none"
 		},
-		"ghcr.io/devcontainers-extra/features/tfsec:1": {
+		"ghcr.io/dhoeric/features/trivy:1": {
 			"version": "latest"
 		}
 	},
@@ -47,6 +53,7 @@
 				"kaellarkin.hugo-shortcode-syntax",
 				"tamasfe.even-better-toml",
 				"davidanson.vscode-markdownlint",
+				"streetsidesoftware.code-spell-checker",
 				"-ms-azuretools.vscode-azureterraform",
 				"-tfsec.tfsec"
 			],
@@ -54,7 +61,33 @@
 				"files.associations": {
 					"**.hcl": "terraform"
 				},
-				"extensions.ignoreRecommendations": true
+				"extensions.ignoreRecommendations": true,
+				"[terraform]": {
+					"editor.formatOnSave": true,
+					"editor.defaultFormatter": "hashicorp.terraform"
+				},
+				"[github-actions-workflow]": {
+					"editor.tabSize": 2,
+					"editor.insertSpaces": true,
+					"editor.detectIndentation": false
+				},
+				"cSpell.language": "en",
+				"cSpell.ignorePaths": [
+					"vscode-extension",
+					".git/{info,lfs,logs,refs,objects}/**",
+					".git/{index,*refs,*HEAD}",
+					".vscode",
+					".vscode-insiders",
+					".devcontainer",
+					"web/nohup.out"
+				],
+				"cSpell.words": [
+					"thatkalle",
+					"kalle"
+				],
+				"cSpell.flagWords": [
+					"terrafrom"
+				]
 			}
 		}
 	},
