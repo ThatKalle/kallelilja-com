@@ -37,8 +37,7 @@ jobs:
       - name: Terraform Init
         run: |
           terraform init \
-           -backend-config="password=$TF_STATE_TOKEN" \
-           -reconfigure
+           -backend-config="password=${TF_STATE_TOKEN}"
         env:
           TF_STATE_TOKEN: ${{ secrets.TF_STATE_TOKEN }}
       
