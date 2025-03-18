@@ -35,10 +35,15 @@ resource "github_repository" "kallelilja_com" {
   lifecycle {
     prevent_destroy = true
     ignore_changes = [
+      # Without these the GITHUB_TOKEN needs contents:write permission.
+      allow_merge_commit,
+      allow_rebase_merge,
+      allow_squash_merge,
       merge_commit_message,
       merge_commit_title,
       squash_merge_commit_message,
       squash_merge_commit_title,
+      pages[0].source
     ]
   }
 }
