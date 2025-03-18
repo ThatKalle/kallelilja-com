@@ -29,10 +29,11 @@ jobs:
 
   deploy:
     needs: ci
+    name: 'Terraform - Production'
     runs-on: ubuntu-latest
+
     environment:
       name: production
-      url: "https://kallelilja.com"
 
     defaults:
       run:
