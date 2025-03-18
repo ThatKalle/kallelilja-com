@@ -80,8 +80,8 @@ jobs:
       url: "https://kallelilja.com"
 
     permissions:
-      pages: write
       id-token: write
+      pages: write
 
     steps:
       - name: Deploy to GitHub Pages
