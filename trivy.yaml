@@ -1,0 +1,14 @@
+format: table
+
+scan:
+  scanners:
+    - misconfig
+
+  skip-dirs:
+    - "/home/vscode/.vscode-server/**"
+    - "/home/vscode/.oh-my-zsh/**"
+
+misconfiguration:
+  scanners:
+    - terraform
+    - dockerfile

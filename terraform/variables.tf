@@ -1,7 +1,7 @@
-variable "tf_gh_token" {
-  description = "GitHub OAuth / Personal Access Token."
-  type        = string
-  sensitive   = true
+variable "branch_names" {
+  description = "List of branch names"
+  type        = set(string)
+  default     = ["main"]
 }
 
 # variable "dns_key_secret" {
