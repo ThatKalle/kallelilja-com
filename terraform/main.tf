@@ -53,24 +53,6 @@ resource "github_repository_topics" "repository_topics" {
   ]
 }
 
-# resource "github_branch" "main" {
-#   repository = github_repository.terraform_playground.name
-#   branch     = "main"
-
-#   lifecycle {
-#     prevent_destroy = true
-#   }
-# }
-
-# resource "github_branch" "staging" {
-#   repository = github_repository.terraform_playground.name
-#   branch     = "staging"
-
-#   lifecycle {
-#     prevent_destroy = true
-#   }
-# }
-
 resource "github_branch" "branch" {
   for_each   = var.branch_names
   repository = github_repository.kallelilja_com.name
