@@ -3,6 +3,7 @@ format: table
 scan:
   scanners:
     - misconfig
+    - secret
 
   skip-dirs:
     - "/home/vscode/.vscode-server/**"
