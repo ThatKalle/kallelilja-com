@@ -1,2 +1,5 @@
-# nohup output file
+# Ignore nohup output file
 nohup.out
+
+# Ignore local .env
+.env
