@@ -239,7 +239,7 @@ gitCommit = ""
 
   [[params.social]]
     name = "linkedin"
-    url  = "https://www.linkedin.com/in/kalle-lilja-71743995"
+    url  = "https://linkedin.com/in/kalle-lilja-71743995"
 
   # [[params.social]]
   #   name = "stackoverflow"
