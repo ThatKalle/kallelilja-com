@@ -1,6 +1,5 @@
 {
 	"name": "kallelilja-com Devcontainer",
-
 	"build": {
 		"dockerfile": "Dockerfile",
 		"args": {
@@ -10,14 +9,12 @@
 			"TFPROVIDERCHECK_CHECKSUM": "958f9779a551cdb5cb4f205694760c3b569466f295d5cf345f30074970107444"
 		}
 	},
-
 	"runArgs": [
 		"--cap-drop", "SYS_ADMIN",
 		"--cap-drop", "DAC_OVERRIDE",
 		"--cap-drop", "DAC_READ_SEARCH",
 		"--cap-drop", "SYS_PTRACE"
 	],
-
 	"features": {
 		"ghcr.io/devcontainers/features/hugo:1": {
 			"version": "0.145.0",
@@ -32,15 +29,15 @@
 			"version": "latest"
 		}
 	},
-
-	"forwardPorts": [1313],
+	"forwardPorts": [
+		1313
+	],
 	"portsAttributes": {
 		"1313": {
 			"label": "Hugo server",
 			"onAutoForward": "openBrowserOnce"
 		}
 	},
-
 	"customizations": {
 		"vscode": {
 			"extensions": [
@@ -91,8 +88,6 @@
 			}
 		}
 	},
-
 	"postCreateCommand": "bash .devcontainer/postCreateCommand.sh",
-	
 	"postStartCommand": "bash .devcontainer/postStartCommand.sh"
 }
