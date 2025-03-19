@@ -92,8 +92,11 @@ jobs:
       - name: Cache tfprovidercheck
         uses: actions/cache@d4323d4df104b026a6aa633fdb11d772146be0bf # v4.2.2
         with:
-          path: tfprovidercheck.tar.gz
-          key: ${{ runner.os }}-tfprovidercheck-${{ hashFiles('tfprovidercheck.tar.gz.sha256') }}
+          path: |
+            tfprovidercheck.tar.gz
+            /usr/local/bin/tfprovidercheck
+          key: ${{ runner.os }}-tfprovidercheck-${{ hashFiles('**/tfprovidercheck.tar.gz.sha256') }}
+          restore-keys: ${{ runner.os }}-tfprovidercheck-
 
       - name: Setup tfprovidercheck
         run: |
