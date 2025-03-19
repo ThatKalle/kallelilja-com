@@ -89,10 +89,26 @@ jobs:
           skip-setup-trivy: true
           skip-dirs: ".devcontainer"
 
+      - name: Cache tfprovidercheck
+        uses: actions/cache@d4323d4df104b026a6aa633fdb11d772146be0bf # v4.2.2
+        with:
+          path: tfprovidercheck.tar.gz
+          key: ${{ runner.os }}-tfprovidercheck-${{ hashFiles('tfprovidercheck.tar.gz.sha256') }}
+
       - name: Setup tfprovidercheck
         run: |
-          wget -O - https://github.com/suzuki-shunsuke/tfprovidercheck/releases/download/v1.0.2/tfprovidercheck_linux_amd64.tar.gz | tar xzf - -C /usr/local/bin
-      
+          set -e
+          if [ ! -f tfprovidercheck.tar.gz ]; then
+            curl -L -o tfprovidercheck.tar.gz ${TFPROVIDERCHECK_URL}
+            echo "${TFPROVIDERCHECK_CHECKSUM}  tfprovidercheck.tar.gz" > tfprovidercheck.tar.gz.sha256
+            sha256sum -c tfprovidercheck.tar.gz.sha256
+          fi
+          tar -xzf tfprovidercheck.tar.gz -C /usr/local/bin
+          rm tfprovidercheck.tar.gz tfprovidercheck.tar.gz.sha256
+        env:
+          TFPROVIDERCHECK_URL: "https://github.com/suzuki-shunsuke/tfprovidercheck/releases/download/v1.0.2/tfprovidercheck_linux_amd64.tar.gz"
+          TFPROVIDERCHECK_CHECKSUM: "958f9779a551cdb5cb4f205694760c3b569466f295d5cf345f30074970107444"
+
       - name: Run tfprovidercheck
         run: |
           terraform version -json | tfprovidercheck
