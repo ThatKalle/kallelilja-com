@@ -91,9 +91,10 @@ resource "github_actions_repository_permissions" "kallelilja_com" {
     github_owned_allowed = true
     verified_allowed     = false
     patterns_allowed = [
-      "hashicorp/setup-terraform@*",
       "aquasecurity/setup-trivy@*",
       "aquasecurity/trivy-action@*",
+      "google/osv-scanner-action/.github/workflows/osv-scanner-reusable.yml@*",
+      "hashicorp/setup-terraform@*",
       "peaceiris/actions-hugo@*",
       "terraform-linters/setup-tflint@*"
     ]
