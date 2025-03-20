@@ -94,6 +94,8 @@ resource "github_actions_repository_permissions" "kallelilja_com" {
       "aquasecurity/setup-trivy@*",
       "aquasecurity/trivy-action@*",
       "google/osv-scanner-action/.github/workflows/osv-scanner-reusable.yml@*",
+      "google/osv-scanner-action/osv-reporter-action@*",
+      "google/osv-scanner-action/osv-scanner-action@*",
       "hashicorp/setup-terraform@*",
       "peaceiris/actions-hugo@*",
       "terraform-linters/setup-tflint@*"
