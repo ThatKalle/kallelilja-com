@@ -36,6 +36,7 @@ resource "github_repository" "kallelilja_com" {
     prevent_destroy = true
     ignore_changes = [
       # Without these the GITHUB_TOKEN needs contents:write permission.
+      allow_auto_merge,
       allow_merge_commit,
       allow_rebase_merge,
       allow_squash_merge,
