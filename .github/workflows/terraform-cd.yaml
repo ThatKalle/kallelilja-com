@@ -6,6 +6,7 @@ on:
       - main
     paths: 
       - 'terraform/**.tf'
+      - 'terraform/input/**'
   workflow_dispatch:
     inputs:
       do-apply:
