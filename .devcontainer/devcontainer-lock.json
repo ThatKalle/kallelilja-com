@@ -1,5 +1,10 @@
 {
   "features": {
+    "ghcr.io/devcontainers-extra/features/actionlint:1": {
+      "version": "1.0.6",
+      "resolved": "ghcr.io/devcontainers-extra/features/actionlint@sha256:ea2ca8c285c35afcbdb6330653f2b40d70852941b098428f5fd7f9adb44a1704",
+      "integrity": "sha256:ea2ca8c285c35afcbdb6330653f2b40d70852941b098428f5fd7f9adb44a1704"
+    },
     "ghcr.io/devcontainers/features/hugo:1": {
       "version": "1.1.2",
       "resolved": "ghcr.io/devcontainers/features/hugo@sha256:60233d58f5b8b875e38b96222004b9be2f8401887c9df9509b1dc42fe1b2f95f",

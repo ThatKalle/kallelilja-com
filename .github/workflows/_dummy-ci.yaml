@@ -9,11 +9,11 @@ permissions:
   contents: read
 
 jobs:
-  terraform-ci:
-    name: 'Terraform CI'
+  gha-ci:
+    name: 'GitHub Actions CI'
     runs-on: ubuntu-latest
     steps:
-      - name: Dummy - Terraform CI
+      - name: Dummy - GitHub Actions CI
         run: exit 0
 
   hugo-ci:
@@ -21,4 +21,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Dummy - HUGO CI
+        run: exit 0
+       
+  terraform-ci:
+    name: 'Terraform CI'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Dummy - Terraform CI
         run: exit 0
