@@ -6,9 +6,9 @@
       "integrity": "sha256:60233d58f5b8b875e38b96222004b9be2f8401887c9df9509b1dc42fe1b2f95f"
     },
     "ghcr.io/devcontainers/features/terraform:1": {
-      "version": "1.3.8",
-      "resolved": "ghcr.io/devcontainers/features/terraform@sha256:f6cdc43852001e7fb0b73865aa09d57029e3d75900526766d587e16bc1391a80",
-      "integrity": "sha256:f6cdc43852001e7fb0b73865aa09d57029e3d75900526766d587e16bc1391a80"
+      "version": "1.3.9",
+      "resolved": "ghcr.io/devcontainers/features/terraform@sha256:e7e8ae1eee8ef52a270eb1251aa1ca3ab62d96d987bbe215da93f3f61db85deb",
+      "integrity": "sha256:e7e8ae1eee8ef52a270eb1251aa1ca3ab62d96d987bbe215da93f3f61db85deb"
     },
     "ghcr.io/dhoeric/features/trivy:1": {
       "version": "1.0.0",
