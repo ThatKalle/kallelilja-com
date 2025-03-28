@@ -16,6 +16,7 @@
 		"--cap-drop", "SYS_PTRACE"
 	],
 	"features": {
+		// https://containers.dev/features
 		"ghcr.io/devcontainers/features/hugo:1": {
 			"version": "0.145.0",
 			"extended": true
