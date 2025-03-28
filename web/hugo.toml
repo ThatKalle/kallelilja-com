@@ -33,6 +33,11 @@ gitCommit = ""
   pagerSize      = 20
   path           = 'page'
 
+[privacy]
+  [privacy.googleAnalytics]
+    disable = false
+    respectDoNotTrack = true
+
 [services]
 #   [services.rss]
 #       # Maximum number of items in the RSS feed.
@@ -40,8 +45,8 @@ gitCommit = ""
       
 #   [services.disqus]
 #     shortname = 'your-disqus-shortname'
-#   [services.googleAnalytics]
-#     ID = 'G-MEASUREMENT_ID'
+  [services.googleAnalytics]
+    ID = 'G-BEGB6LZPGP'
 
 [permalinks]
   posts = "/posts/:year/:month/:title/"
