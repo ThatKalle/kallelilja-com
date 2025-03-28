@@ -11,6 +11,9 @@ updates:
         update-types: ["version-update:semver-major"]
     commit-message:
       prefix: "chore(deps)"
+    labels:
+      - dependencies
+      - devcontainers_package_manager
 
   - package-ecosystem: "docker"
     directory: "/.devcontainer"
@@ -22,6 +25,9 @@ updates:
         update-types: ["version-update:semver-major"]
     commit-message:
       prefix: "chore(deps)"
+    labels:
+      - dependencies
+      - docker
 
   - package-ecosystem: "github-actions"
     directory: "/"
@@ -32,6 +38,9 @@ updates:
         update-types: ["version-update:semver-major"]
     commit-message:
       prefix: "chore(deps)"
+    labels:
+      - dependencies
+      - github_actions
 
   - package-ecosystem: "terraform"
     directory: "/terraform"
@@ -43,3 +52,6 @@ updates:
         update-types: ["version-update:semver-major"]
     commit-message:
       prefix: "chore(deps)"
+    labels:
+      - dependencies
+      - terraform
