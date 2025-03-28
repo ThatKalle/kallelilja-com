@@ -129,3 +129,11 @@ resource "github_repository_dependabot_security_updates" "dependabot_security_up
   repository = github_repository.kallelilja_com.name
   enabled    = true
 }
+
+resource "github_repository_file" "dependabot_yml" {
+  repository          = github_repository.kallelilja_com.name
+  branch              = github_branch_default.default.branch
+  file                = ".github/dependabot.yml"
+  content             = file("${path.module}/input/dependabot.yml")
+  overwrite_on_create = true
+}
