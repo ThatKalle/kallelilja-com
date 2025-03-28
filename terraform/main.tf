@@ -107,6 +107,7 @@ resource "github_actions_repository_permissions" "kallelilja_com" {
       "google/osv-scanner-action/osv-scanner-action@*",
       "hashicorp/setup-terraform@*",
       "peaceiris/actions-hugo@*",
+      "raven-actions/actionlint@*",
       "terraform-linters/setup-tflint@*"
     ]
   }
