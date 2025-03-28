@@ -2,5 +2,31 @@
     "files.associations": {
         "**.hcl": "terraform"
     },
-    "extensions.ignoreRecommendations": true
+    "extensions.ignoreRecommendations": true,
+    "[terraform]": {
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "hashicorp.terraform"
+    },
+    "[github-actions-workflow]": {
+        "editor.tabSize": 2,
+        "editor.insertSpaces": true,
+        "editor.detectIndentation": false
+    },
+    "cSpell.language": "en",
+    "cSpell.ignorePaths": [
+        "vscode-extension",
+        ".git/{info,lfs,logs,refs,objects}/**",
+        ".git/{index,*refs,*HEAD}",
+        ".vscode",
+        ".vscode-insiders",
+        ".devcontainer",
+        "web/nohup.out"
+    ],
+    "cSpell.words": [
+        "thatkalle",
+        "kalle"
+    ],
+    "cSpell.flagWords": [
+        "terrafrom"
+    ]
 }

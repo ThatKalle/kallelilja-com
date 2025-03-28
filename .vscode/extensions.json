@@ -8,7 +8,8 @@
         "kaellarkin.hugo-tags-helper",
         "kaellarkin.hugo-shortcode-syntax",
         "tamasfe.even-better-toml",
-        "davidanson.vscode-markdownlint"
+        "davidanson.vscode-markdownlint",
+        "streetsidesoftware.code-spell-checker",
     ],
     "unwantedRecommendations": [
         "ms-azuretools.vscode-azureterraform",
