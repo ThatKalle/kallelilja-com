@@ -19,6 +19,11 @@
       "version": "1.0.0",
       "resolved": "ghcr.io/dhoeric/features/trivy@sha256:c291ec03dd2938d1c4bc6cf87e6afab8067514fb000c9165bcc66a6f65092783",
       "integrity": "sha256:c291ec03dd2938d1c4bc6cf87e6afab8067514fb000c9165bcc66a6f65092783"
+    },
+    "ghcr.io/marcozac/devcontainer-features/shellcheck:1": {
+      "version": "1.0.0",
+      "resolved": "ghcr.io/marcozac/devcontainer-features/shellcheck@sha256:1a18cd0170c5c8a42e58a224e75b50a0e0ed5e0290c1a64aa55562256d836401",
+      "integrity": "sha256:1a18cd0170c5c8a42e58a224e75b50a0e0ed5e0290c1a64aa55562256d836401"
     }
   }
 }

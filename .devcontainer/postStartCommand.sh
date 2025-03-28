@@ -11,6 +11,11 @@ trivy --version
 tfprovidercheck --version
 cd ..
 
+cd .github/workflows
+actionlint --version
+shellcheck --version
+cd ../..
+
 cd web/
 dockerize --version
 hugo version

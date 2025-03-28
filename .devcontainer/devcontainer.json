@@ -24,6 +24,9 @@
 			"version": "0.145.0",
 			"extended": true
 		},
+		"ghcr.io/marcozac/devcontainer-features/shellcheck:1": {
+			"version": "latest"
+		},
 		"ghcr.io/devcontainers/features/terraform:1": {
 			"version": "latest",
 			"tflint": "latest",
