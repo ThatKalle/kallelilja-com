@@ -93,6 +93,7 @@ resource "github_actions_repository_permissions" "kallelilja_com" {
     patterns_allowed = [
       "aquasecurity/setup-trivy@*",
       "aquasecurity/trivy-action@*",
+      "dependabot/fetch-metadata@*",
       "google/osv-scanner-action/.github/workflows/osv-scanner-reusable.yml@*",
       "google/osv-scanner-action/osv-reporter-action@*",
       "google/osv-scanner-action/osv-scanner-action@*",
