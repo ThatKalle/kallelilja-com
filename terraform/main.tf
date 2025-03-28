@@ -13,7 +13,7 @@ resource "github_repository" "kallelilja_com" {
   allow_merge_commit          = true
   allow_rebase_merge          = true
   allow_squash_merge          = true
-  allow_auto_merge            = false
+  allow_auto_merge            = true
   web_commit_signoff_required = true
 
   auto_init = false
