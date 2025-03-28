@@ -124,3 +124,8 @@ resource "github_repository_deployment_branch_policy" "production" {
   environment_name = github_repository_environment.production.environment
   name             = "main"
 }
+
+resource "github_repository_dependabot_security_updates" "dependabot_security_updates" {
+  repository = github_repository.kallelilja_com.name
+  enabled    = true
+}
