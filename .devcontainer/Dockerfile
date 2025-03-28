@@ -22,17 +22,23 @@ RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
     zip \
     && apt-get clean && rm -rf /var/lib/apt/lists/* \
     # Download and verify sha256 dockerize
-    && curl -L -o dockerize.tar.gz ${DOCKERIZE_URL} \
-    && echo "${DOCKERIZE_CHECKSUM}  dockerize.tar.gz" > dockerize.tar.gz.sha256 \
-    && sha256sum -c dockerize.tar.gz.sha256 \
-    && tar -xzf dockerize.tar.gz -C /usr/local/bin \
-    && rm dockerize.tar.gz dockerize.tar.gz.sha256 \
+    && FILE="dockerize.tar.gz" \
+    && SHAFILE="dockerize.tar.gz.sha256" \
+    && curl -L -o ${FILE} ${DOCKERIZE_URL} \
+    && if [ -f "${SHAFILE}" ]; then echo "${SHAFILE}"; fi \
+    && echo "${DOCKERIZE_CHECKSUM}  ${FILE}" > "${SHAFILE}" \
+    && sha256sum -c "${SHAFILE}" \
+    && tar -xzf ${FILE} -C /usr/local/bin \
+    && rm ${FILE} ${SHAFILE} \
     # Download and verify sha256 tfprovidercheck
-    && curl -L -o tfprovidercheck.tar.gz ${TFPROVIDERCHECK_URL} \
-    && echo "${TFPROVIDERCHECK_CHECKSUM}  tfprovidercheck.tar.gz" > tfprovidercheck.tar.gz.sha256 \
-    && sha256sum -c tfprovidercheck.tar.gz.sha256 \
-    && tar -xzf tfprovidercheck.tar.gz -C /usr/local/bin \
-    && rm tfprovidercheck.tar.gz tfprovidercheck.tar.gz.sha256
+    && FILE="tfprovidercheck.tar.gz" \
+    && SHAFILE="tfprovidercheck.tar.gz.sha256" \
+    && curl -L -o ${FILE} ${TFPROVIDERCHECK_URL} \
+    && if [ -f "${SHAFILE}" ]; then rm "${SHAFILE}"; fi \
+    && echo "${TFPROVIDERCHECK_CHECKSUM}  ${FILE}" > "${SHAFILE}" \
+    && sha256sum -c "${SHAFILE}" \
+    && tar -xzf ${FILE} -C /usr/local/bin \
+    && rm ${FILE} ${SHAFILE}
 
 USER vscode
 
