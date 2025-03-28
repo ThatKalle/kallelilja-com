@@ -69,7 +69,7 @@
 {{- end }}
 
 <!-- Google Analytics internal template -->
-{{ if eq (getenv "HUGO_ENV") "production" }}
+{{ if eq (getenv "HUGO_ENVIRONMENT") "production" }}
     {{- if .Site.Config.Services.GoogleAnalytics.ID }}
         {{ template "_internal/google_analytics.html" . }}
     {{- end }}
