@@ -79,6 +79,14 @@ resource "github_branch_protection" "branch_protection" {
   pattern       = each.key
 
   require_signed_commits = true
+
+  required_status_checks {
+    strict = true
+    contexts = [
+      "Terraform CI",
+      "HUGO CI"
+    ]
+  }
 }
 
 resource "github_actions_repository_permissions" "kallelilja_com" {
