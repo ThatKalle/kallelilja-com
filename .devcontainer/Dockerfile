@@ -11,6 +11,7 @@ ENV HUGO_PARAMS_gitCommit="d3m0sh4"
 USER root
 
 RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
+    && apt-get upgrade -y \
     && apt-get -y install --no-install-recommends \
     ca-certificates \
     coreutils \
@@ -20,7 +21,9 @@ RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
     gpg  \
     wget \
     zip \
-    && apt-get clean && rm -rf /var/lib/apt/lists/* \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/* \
+    && rm -rf /var/cache/apt/archives/partial/* \
     # Download and verify sha256 dockerize
     && FILE="dockerize.tar.gz" \
     && SHAFILE="dockerize.tar.gz.sha256" \
