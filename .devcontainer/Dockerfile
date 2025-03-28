@@ -1,11 +1,11 @@
 FROM mcr.microsoft.com/devcontainers/base:bookworm
 
-ARG DOCKERIZE_VERSION
-ARG DOCKERIZE_CHECKSUM
-ENV DOCKERIZE_URL="https://github.com/jwilder/dockerize/releases/download/${DOCKERIZE_VERSION}/dockerize-linux-amd64-${DOCKERIZE_VERSION}.tar.gz"
-ARG TFPROVIDERCHECK_VERSION
-ARG TFPROVIDERCHECK_CHECKSUM
-ENV TFPROVIDERCHECK_URL="https://github.com/suzuki-shunsuke/tfprovidercheck/releases/download/${TFPROVIDERCHECK_VERSION}/tfprovidercheck_linux_amd64.tar.gz"
+ARG DOCKERIZE_VERSION \
+    DOCKERIZE_CHECKSUM \
+    TFPROVIDERCHECK_VERSION \
+    TFPROVIDERCHECK_CHECKSUM
+ENV DOCKERIZE_URL="https://github.com/jwilder/dockerize/releases/download/${DOCKERIZE_VERSION}/dockerize-linux-amd64-${DOCKERIZE_VERSION}.tar.gz" \
+    TFPROVIDERCHECK_URL="https://github.com/suzuki-shunsuke/tfprovidercheck/releases/download/${TFPROVIDERCHECK_VERSION}/tfprovidercheck_linux_amd64.tar.gz"
 ENV HUGO_PARAMS_gitCommit="d3m0sh4"
 
 USER root
