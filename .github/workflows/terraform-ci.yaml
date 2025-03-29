@@ -79,7 +79,7 @@ jobs:
       - name: Init TFLint
         run: tflint --init
         env:
-          GITHUB_TOKEN:     ${{ github.token }}
+          GITHUB_TOKEN: ${{ github.token }}
   
       - name: Run TFLint
         run: tflint -f compact
@@ -126,8 +126,8 @@ jobs:
         id: terraform_plan
         run: terraform plan -input=false -no-color
         env:
-          GITHUB_TOKEN:     ${{ secrets.TF_GITHUB_TOKEN }}
-          STATUSCAKE_TOKEN: ${{ secrets.TF_STATUSCAKE_TOKEN }}
+          GITHUB_TOKEN:         ${{ secrets.TF_GITHUB_TOKEN }}
+          STATUSCAKE_API_TOKEN: ${{ secrets.TF_STATUSCAKE_TOKEN }}
 
       - name: Summary
         run: |
