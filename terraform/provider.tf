@@ -4,6 +4,10 @@ terraform {
       source  = "integrations/github"
       version = "6.6.0"
     }
+    statuscake = {
+      source  = "StatusCakeDev/statuscake"
+      version = "2.2.2"
+    }
     # dns = {
     #   source  = "hashicorp/dns"
     #   version = "3.4.2"
@@ -15,3 +19,5 @@ terraform {
 }
 
 provider "github" {}
+
+provider "statuscake" {}

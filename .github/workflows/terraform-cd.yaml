@@ -25,8 +25,9 @@ jobs:
   ci:
     uses: ./.github/workflows/terraform-ci.yaml
     secrets:
-      TF_STATE_TOKEN:     ${{ secrets.TF_STATE_TOKEN }}
-      TF_GITHUB_TOKEN:    ${{ secrets.TF_GITHUB_TOKEN }}
+      TF_STATE_TOKEN:       ${{ secrets.TF_STATE_TOKEN }}
+      TF_GITHUB_TOKEN:      ${{ secrets.TF_GITHUB_TOKEN }}
+      TF_STATUSCAKE_TOKEN:  ${{ secrets.TF_STATUSCAKE_TOKEN }}
 
   deploy:
     needs: ci
@@ -65,16 +66,18 @@ jobs:
           terraform init \
            -backend-config="password=${TF_STATE_TOKEN}"
         env:
-          TF_STATE_TOKEN: ${{ secrets.TF_STATE_TOKEN }}
+          TF_STATE_TOKEN:   ${{ secrets.TF_STATE_TOKEN }}
 
       - name: Terraform Plan
         run: terraform plan -input=false
         env:
-          GITHUB_TOKEN: ${{ secrets.TF_GITHUB_TOKEN }}
+          GITHUB_TOKEN:     ${{ secrets.TF_GITHUB_TOKEN }}
+          STATUSCAKE_TOKEN: ${{ secrets.TF_STATUSCAKE_TOKEN }}
 
       - name: Terraform Apply
         id: terraform_Apply
         if: (github.ref == 'refs/heads/main' && github.event_name == 'push') || (github.ref == 'refs/heads/main' && github.event_name == 'workflow_dispatch' && github.event.inputs.do-apply == 'true')
         run: terraform apply -auto-approve -input=false
         env:
-          GITHUB_TOKEN: ${{ secrets.TF_GITHUB_TOKEN }}
+          GITHUB_TOKEN:     ${{ secrets.TF_GITHUB_TOKEN }}
+          STATUSCAKE_TOKEN: ${{ secrets.TF_STATUSCAKE_TOKEN }}
