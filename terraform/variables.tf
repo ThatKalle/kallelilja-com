@@ -4,6 +4,12 @@ variable "branch_names" {
   default     = ["main"]
 }
 
+variable "statuscake_default_statuscodes" {
+  description = "List of StatusCake default status codes."
+  type        = set(string)
+  default     = ["202", "404", "405"]
+}
+
 # variable "dns_key_secret" {
 #   description = "A Base64-encoded string containing the shared secret to be used for TSIG."
 #   type        = string
