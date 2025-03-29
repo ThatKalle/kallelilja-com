@@ -47,8 +47,8 @@ resource "statuscake_uptime_check" "kallelilja_com" {
 resource "statuscake_pagespeed_check" "kallelilja_com" {
   name           = "kallelilja.com"
   check_interval = 86400
-
-  region = "DE"
+  region         = "DE"
+  paused         = true # Set to paused while waiting for StatusCake reply
 
   alert_config {
     alert_bigger  = 0
