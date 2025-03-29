@@ -5,7 +5,7 @@ terraform {
       version = "6.6.0"
     }
     statuscake = {
-      source  = "StatusCakeDev/statuscake"
+      source  = "statuscakedev/statuscake"
       version = "2.2.2"
     }
     # dns = {
