@@ -1,5 +1,5 @@
 providers:
   - name: registry.terraform.io/integrations/github
     version: "6.6.0"
-  - name: registry.terraform.io/StatusCakeDev/statuscake
+  - name: registry.terraform.io/statuscakedev/statuscake
     version: "2.2.2"
