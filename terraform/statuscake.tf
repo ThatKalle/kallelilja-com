@@ -35,7 +35,7 @@ resource "statuscake_uptime_check" "kallelilja_com" {
     user_agent       = "Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.4 (KHTML, like Gecko) Chrome/98 Safari/537.4 (StatusCake)"
     validate_ssl     = false
 
-    status_codes = local.statuscake_default_statuscodes
+    status_codes = setunion(var.statuscake_default_statuscodes, local.statuscake_default_statuscodes)
   }
 
   tags = [
