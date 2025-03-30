@@ -1,5 +1,5 @@
-queries:
-  - security-extended
-
+name: "CodeQL configuration"
+queries: 
+  - uses: security-extended
 exclude_queries:
   - js/regex/missing-regexp-anchor
