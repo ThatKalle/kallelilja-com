@@ -87,7 +87,7 @@ jobs:
       with:
         patterns: |
           -**/*.js:js/regex/missing-regexp-anchor
-        input: "sarif-results/${{ matrix.language }}.sarif"
+        input: "sarif-results/javascript.sarif"
         output: "sarif-results/${{ matrix.language }}.sarif"
 
     - name: Upload CodeQL sarif
