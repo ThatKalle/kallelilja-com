@@ -1,4 +1,4 @@
-name: Dummy CI
+name: '_Dummy CI'
 
 on:
   pull_request:
