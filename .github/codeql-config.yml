@@ -1,0 +1,5 @@
+queries:
+  - security-extended
+
+exclude_queries:
+  - js/regex/missing-regexp-anchor
