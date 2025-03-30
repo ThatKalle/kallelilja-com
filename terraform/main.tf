@@ -101,6 +101,7 @@ resource "github_actions_repository_permissions" "kallelilja_com" {
     github_owned_allowed = true
     verified_allowed     = false
     patterns_allowed = [
+      "advanced-security/filter-sarif@*",
       "aquasecurity/setup-trivy@*",
       "aquasecurity/trivy-action@*",
       "dependabot/fetch-metadata@*",
