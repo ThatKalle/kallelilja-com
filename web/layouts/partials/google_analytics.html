@@ -1,6 +1,6 @@
 {{ if not site.Config.Privacy.GoogleAnalytics.Disable }}
   {{- with site.Config.Services.GoogleAnalytics.ID }}
-    <script async src="https://www.googletagmanager.com/gtag/js?id={{ . }}" integrity="sha384-iKinHCq1hmI+c0mKoZObwa4YgAwzJCYM7oMaVYSTO1mJY1PwF7m1jGxIaDELA9fF" crossorigin="anonymous"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id={{ . }}"></script>
     <script>
       var doNotTrack = false;
       if ({{ site.Config.Privacy.GoogleAnalytics.RespectDoNotTrack }}) {
