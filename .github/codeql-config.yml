@@ -1,5 +1,3 @@
 name: "CodeQL configuration"
 queries: 
   - uses: security-extended
-exclude_queries:
-  - javascript/ql/src/Security/CWE-020/MissingRegExpAnchor.ql
