@@ -28,7 +28,7 @@ jobs:
         - language: actions
           build-mode: none
         - language: javascript-typescript
-          build-mode: none # JavaScript/TypeScript does not support the manual build mode. Please try using one of the following build modes instead: none.
+          build-mode: none
 
     steps:
     - name: Checkout repository
