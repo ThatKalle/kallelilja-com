@@ -67,8 +67,7 @@ jobs:
       - name: Add RSS Feed integrity
         run: |
           INTEGRITY_HASH=$(openssl dgst -sha384 -binary "public/index.xml" | openssl base64 -A)
-          echo ${INTEGRITY_HASH}
-          sed -i "s|<link rel=\"alternate\" type=\"application/rss+xml\" href=\"\([^\"]*\)/index.xml\" title=\"\([^\"]*\)\" />|<link rel=\"alternate\" type=\"application/rss+xml\" href=\"\1/index.xml\" title=\"\2\" integrity=\"sha384-${INTEGRITY_HASH}\" crossorigin=\"anonymous\" />|" "public/index.html"
+          sed -z -i "s|<link rel=alternate type=application/rss+xml href=\([^\"]*\)/index.xml title=\"\([^\"]*\)\">|<link rel=alternate type=application/rss+xml href=\1/index.xml title=\"\2\" integrity=\"sha384-${INTEGRITY_HASH}\" crossorigin=\"anonymous\">|" "public/index.html"
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@56afc609e74202658d3ffba0e8f6dda462b719fa # v3.0.1
