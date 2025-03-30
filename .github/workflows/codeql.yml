@@ -1,4 +1,4 @@
-name: "CodeQL Advanced"
+name: '🛡️ CodeQL'
 
 on:
   pull_request:
@@ -78,3 +78,19 @@ jobs:
       uses: github/codeql-action/analyze@1b549b9259bda1cb5ddde3b41741a82a2d15a841 # v3.28.13
       with:
         category: "/language:${{ matrix.language }}"
+        output: sarif-results
+        upload: failure-only
+
+    - name: filter-sarif - javascript-typescript
+      if: matrix.language == 'javascript-typescript'
+      uses: advanced-security/filter-sarif@bc96d9fb9338c5b48cc440b1b4d0a350b26a20db #  v1.0.0
+      with:
+        patterns: |
+          -**/*.js:js/regex/missing-regexp-anchor
+        input: "sarif-results/${{ matrix.language }}.sarif"
+        output: "sarif-results/${{ matrix.language }}.sarif"
+
+    - name: Upload CodeQL sarif
+      uses: github/codeql-action/upload-sarif@v3
+      with:
+        sarif_file: "sarif-results/${{ matrix.language }}.sarif"
