@@ -147,3 +147,38 @@ resource "github_repository_file" "dependabot_yml" {
   content             = file("${path.module}/input/dependabot.yml")
   overwrite_on_create = true
 }
+
+resource "github_issue_labels" "kallelilja_com" {
+  repository = github_repository.kallelilja_com.name
+
+  # Dependabot labels
+  label {
+    name        = "dependencies"
+    color       = "0366D6"
+    description = "Pull requests that update a dependency file"
+  }
+
+  label {
+    name        = "devcontainers_package_manager"
+    color       = "2753E3"
+    description = "Pull requests that update devcontainers_package_manager code"
+  }
+
+  label {
+    name        = "docker"
+    color       = "1D63ED"
+    description = "Pull requests that update docker code"
+  }
+
+  label {
+    name        = "github_actions"
+    color       = "2088FF"
+    description = "Pull requests that update github_actions code"
+  }
+
+  label {
+    name        = "terraform"
+    color       = "734BB7"
+    description = "Pull requests that update terraform code"
+  }
+}
