@@ -20,5 +20,3 @@ jobs:
 
       - name: Actionlint
         uses: raven-actions/actionlint@01fce4f43a270a612932cb1c64d40505a029f821 # v2.0.0
-        with:
-          flags: "-ignore SC2086"
