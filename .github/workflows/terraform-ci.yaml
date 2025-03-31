@@ -54,7 +54,7 @@ jobs:
           terraform init \
            -backend-config="password=${TF_STATE_TOKEN}"
         env:
-          TF_STATE_TOKEN:   ${{ secrets.TF_STATE_TOKEN }}
+          TF_STATE_TOKEN: ${{ secrets.TF_STATE_TOKEN }}
       
       - name: Terraform Validate
         run: terraform validate -no-tests
