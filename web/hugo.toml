@@ -68,7 +68,7 @@ gitCommit = ""
   # Metadata mostly used in document's head
   # 
   description = "Personal site of Kalle Lilja"
-  keywords    = ""
+  keywords    = "Kalle, Lilja"
   images      = [""]
 
   # Home subtitle of the index page.
