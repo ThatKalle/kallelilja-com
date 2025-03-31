@@ -1,7 +1,7 @@
 {{ if not site.Config.Privacy.GoogleAnalytics.Disable }}
   {{- with site.Config.Services.GoogleAnalytics.ID }}
     <script async src="https://www.googletagmanager.com/gtag/js?id={{ . }}"></script>
-    <script>
+    <script nonce="mrpSey17zE2UgVd3">
       var doNotTrack = false;
       if ({{ site.Config.Privacy.GoogleAnalytics.RespectDoNotTrack }}) {
         var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
