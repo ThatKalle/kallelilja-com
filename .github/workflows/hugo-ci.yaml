@@ -63,15 +63,16 @@ jobs:
       - name: Check Hugo site for duplicate nonce
         run: |
           declare -A seen_nonces
-          find ${OUTPUT_DIRECTORY} -type f -name "*.html" | while read -r file; do
-              grep -oP 'nonce="\K[^"]+' "$file" | while read -r nonce_value; do
-                  if [[ -n "${seen_nonces[$nonce_value]}" ]]; then
-                      echo "Duplicate nonce value '$nonce_value'"
-                      exit 1
-                  else
-                      seen_nonces["$nonce_value"]=1
-                  fi
-              done
+          find "${OUTPUT_DIRECTORY}" -type f -name "*.html" | while read -r file; do
+            echo "Checking file: $file"
+            grep -oP 'nonce="\K[^"]+' "$file" | while read -r nonce_value; do
+              if [[ -n "${seen_nonces[$nonce_value]}" ]]; then
+                echo "Duplicate nonce value '$nonce_value'"
+                exit 1
+              else
+                seen_nonces["$nonce_value"]=1
+              fi
+            done
           done
         env:
           OUTPUT_DIRECTORY: "audit/"
