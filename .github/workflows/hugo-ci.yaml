@@ -100,6 +100,7 @@ jobs:
           echo "Duplicate nonce check complete. No duplicates found."
         env:
           OUTPUT_DIRECTORY: "audit/"
+          ACTIONS_RUNNER_DEBUG: true
 
       - name: Audit Hugo site (step 1)
         run: |
