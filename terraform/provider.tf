@@ -21,3 +21,12 @@ terraform {
 provider "github" {}
 
 provider "statuscake" {}
+
+# provider "dns" {
+#   update {
+#     server        = "hover.com"
+#     key_name      = "kallelilja-com."
+#     key_algorithm = "hmac-md5"
+#     key_secret    = var.dns_key_secret
+#   }
+# }

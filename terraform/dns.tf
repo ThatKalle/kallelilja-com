@@ -1,12 +1,3 @@
-# provider "dns" {
-#   update {
-#     server        = "hover.com"
-#     key_name      = "kallelilja-com."
-#     key_algorithm = "hmac-md5"
-#     key_secret    = var.dns_key_secret
-#   }
-# }
-
 # resource "dns_a_record_set" "kallelilja_com" {
 #   zone      = "kallelilja.com."
 #   name      = "@"
