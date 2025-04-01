@@ -25,12 +25,12 @@
 			"extended": true
 		},
 		"ghcr.io/devcontainers/features/terraform:1": {
-			"version": "v1.11.3", // https://github.com/hashicorp/terraform/releases
-			"tflint": "v0.55.1", // https://github.com/terraform-linters/tflint/releases
+			"version": "1.11.3", // https://github.com/hashicorp/terraform/releases
+			"tflint": "0.55.1", // https://github.com/terraform-linters/tflint/releases
 			"terragrunt": "none"
 		},
 		"ghcr.io/dhoeric/features/trivy:1": {
-			"version": "v0.60.0" // https://github.com/aquasecurity/trivy/releases
+			"version": "0.60.0" // https://github.com/aquasecurity/trivy/releases
 		},
 		"ghcr.io/marcozac/devcontainer-features/shellcheck:1": {
 			"version": "latest"
