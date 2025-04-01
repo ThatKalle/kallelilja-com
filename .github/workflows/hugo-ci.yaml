@@ -63,17 +63,41 @@ jobs:
       - name: Check Hugo site for duplicate nonce
         run: |
           declare -A seen_nonces
+          echo "Checking for duplicate nonces in directory: ${OUTPUT_DIRECTORY}"
+
           find "${OUTPUT_DIRECTORY}" -type f -name "*.html" | while read -r file; do
-            echo "Checking file: $file"
+            echo "::group::Checking file: $file"
+
+            if [[ ! -s "$file" ]]; then
+              echo "::warning::Warning: File $file is empty or cannot be read. Skipping."
+              continue
+            fi
+
+            nonces_found=0
             grep -oP 'nonce="\K[^"]+' "$file" | while read -r nonce_value; do
+              echo "::debug::Found nonce: $nonce_value"
+
+              if [[ -z "$nonce_value" ]]; then
+                echo "::warning::Warning: Empty nonce found in file $file. Skipping."
+                continue
+              fi
+
               if [[ -n "${seen_nonces[$nonce_value]}" ]]; then
-                echo "Duplicate nonce value '$nonce_value'"
+                echo "Duplicate nonce value '$nonce_value' found in file: $file"
                 exit 1
               else
                 seen_nonces["$nonce_value"]=1
               fi
+              nonces_found=1
             done
+            if [[ $nonces_found -eq 0 ]]; then
+              echo "::debug::No nonces found in file $file."
+              continue
+            fi
+            echo "::endgroup::"
           done
+
+          echo "Duplicate nonce check complete. No duplicates found."
         env:
           OUTPUT_DIRECTORY: "audit/"
 
