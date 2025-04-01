@@ -185,41 +185,6 @@ resource "github_issue_label" "dependabot_issue_labels" {
   name        = each.value.name
 }
 
-# resource "github_issue_labels" "kallelilja_com" {
-#   repository = github_repository.kallelilja_com.name
-
-#   # Dependabot labels
-#   label {
-#     color       = "0366d6"
-#     description = "Pull requests that update a dependency file"
-#     name        = "dependencies"
-#   }
-
-#   label {
-#     color       = "2753e3"
-#     description = "Pull requests that update devcontainers_package_manager code"
-#     name        = "devcontainers_package_manager"
-#   }
-
-#   label {
-#     color       = "1d63ed"
-#     description = "Pull requests that update docker code"
-#     name        = "docker"
-#   }
-
-#   label {
-#     color       = "2088ff"
-#     description = "Pull requests that update github_actions code"
-#     name        = "github_actions"
-#   }
-
-#   label {
-#     color       = "734bb7"
-#     description = "Pull requests that update terraform code"
-#     name        = "terraform"
-#   }
-# }
-
 resource "github_repository_dependabot_security_updates" "dependabot_security_updates" {
   repository = github_repository.kallelilja_com.name
   enabled    = true
@@ -234,6 +199,10 @@ resource "github_repository_file" "dependabot_yml" {
 
   depends_on = [
     github_issue_label.dependabot_issue_labels["dependencies"],
+    github_issue_label.dependabot_issue_labels["devcontainers_package_manager"],
+    github_issue_label.dependabot_issue_labels["docker"],
+    github_issue_label.dependabot_issue_labels["github_actions"],
+    github_issue_label.dependabot_issue_labels["terraform"],
     github_repository_dependabot_security_updates.dependabot_security_updates
   ]
 }
