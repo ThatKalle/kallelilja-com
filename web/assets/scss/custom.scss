@@ -1,0 +1,15 @@
+@import "customvariables";
+
+.logo__link {
+    text-decoration: none;
+}
+
+.logo__cursor {
+    visibility: visible; // or hidden
+    background-color: $powershellBlue;
+    animation-duration: 1s;
+}
+
+.portrait {
+    max-width: 250px !important;
+}

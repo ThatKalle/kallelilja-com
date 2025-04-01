@@ -1,5 +1,6 @@
 <!-- nonce value(s) generated in head.html -->
 {{ $jsNonce1 := .Scratch.Get "jsNonce1" }}
+{{ $jsNonce2 := .Scratch.Get "jsNonce2" }}
 
 {{ $main := resources.Get "js/main.js" }}
 {{ $menu := resources.Get "js/menu.js" }}
@@ -7,14 +8,14 @@
 {{ $secureJS := slice $main $menu $prism | resources.Concat "bundle.js" | resources.Minify | resources.Fingerprint "sha512" }}
 <script type="text/javascript" src="{{ $secureJS.RelPermalink }}" integrity="{{ $secureJS.Data.Integrity }}" nonce="{{ $jsNonce1 }}"></script>
 
-{{ range $val := $.Site.Params.customJS }}
+{{/*  {{ range $val := $.Site.Params.customJS }}
     {{ if gt (len $val) 0 }}
         <script src="{{ $val }}"></script>
     {{ end }}
-{{ end }}
+{{ end }}  */}}
 
 {{ if .Page.Store.Get "hasMermaid" }}
-<script type="module">
+<script type="module" nonce="{{ $jsNonce2 }}">
     import mermaid from "https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.esm.min.mjs";
     const settings = localStorage.getItem("theme") === "dark" ?
         {

@@ -167,9 +167,9 @@ gitCommit = ""
     logoText     = "C:\\Users\\Kalle>"
     logoHomeLink = "/"
     # Set true to remove the logo cursor entirely.
-    logoCursorDisabled = false
+    ## logoCursorDisabled = false
     # Set to a valid CSS color to change the cursor in the logo.
-    logoCursorColor    = "#012456"
+    ## logoCursorColor    = "#012456"
     # Set to a valid CSS time value to change the animation duration, "0s" to disable.
     # logoCursorAnimate  = "2s"
     # Append the current url pathname to logoText 
@@ -183,7 +183,7 @@ gitCommit = ""
   [params.portrait]
     path     = "/img/portrait.png"
     alt      = "Portrait"
-    maxWidth = "250px"
+    ## maxWidth = "250px"
 
   # # # # # # # # # # # # # # # # # # # # # # # # # # # # #  
   # Addon: Commento
