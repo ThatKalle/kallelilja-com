@@ -60,7 +60,7 @@ jobs:
           HUGO_ENABLEMISSINGTRANSLATIONPLACEHOLDERS: true
           HUGO_MINIFY_TDEWOLFF_HTML_KEEPCOMMENTS: true
           
-      - name: Check Hugo site for nonce errors
+      - name: Check Hugo audit site for nonce errors
         run: |
           declare -A seen_nonces
           echo "Checking for nonces in directory: ${OUTPUT_DIRECTORY}."
@@ -93,10 +93,13 @@ jobs:
             done < <(grep -oP 'nonce="[^"]*"' "$file" 2>/dev/null)
 
             if ! $nonces_found; then
-                echo "::debug::No nonces found in file $file."
+              echo "No nonces found in file $file."
+            else
+              echo "Only unique nonces found in file $file."
             fi
             echo "::endgroup::"
           done
+          echo "Nonce check complete!"
         env:
           OUTPUT_DIRECTORY: "audit/"
 
