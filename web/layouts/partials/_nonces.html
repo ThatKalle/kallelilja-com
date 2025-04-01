@@ -1,0 +1,3 @@
+{{ $seed := printf "%s%s" .seed (now) }}
+{{ $randomString := delimit (shuffle (split (md5 .seed) "" )) "" }}
+{{ return $randomString }}
