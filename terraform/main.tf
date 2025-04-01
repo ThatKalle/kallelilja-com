@@ -140,9 +140,9 @@ resource "github_issue_label" "default_issue_labels" {
 
   repository = github_repository.kallelilja_com.name
 
-  color       = each.value.color
+  color       = lower(each.value.color)
   description = each.value.description
-  name        = replace(each.value.name, " ", "%20")
+  name        = lower(replace(each.value.name, " ", "%20"))
 }
 
 locals {
@@ -180,9 +180,9 @@ resource "github_issue_label" "dependabot_issue_labels" {
 
   repository = github_repository.kallelilja_com.name
 
-  color       = each.value.color
+  color       = lower(each.value.color)
   description = each.value.description
-  name        = replace(each.value.name, " ", "%20")
+  name        = lower(replace(each.value.name, " ", "%20"))
 }
 
 resource "github_repository_dependabot_security_updates" "dependabot_security_updates" {
