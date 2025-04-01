@@ -182,7 +182,7 @@ resource "github_issue_label" "dependabot_issue_labels" {
 
   color       = each.value.color
   description = each.value.description
-  name        = each.value.name
+  name        = replace(each.value.name, " ", "%20")
 }
 
 resource "github_repository_dependabot_security_updates" "dependabot_security_updates" {
