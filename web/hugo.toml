@@ -111,7 +111,20 @@ gitCommit = ""
   # Integrate Javascript files or stylesheets by adding the url to the external assets or by
   # linking local files with their path relative to the static folder, e.g. "css/styles.css"
   #
-  customCSS = []
+  # customCSS = [
+  #   "css/styles.css"
+  # ]
+
+  # [params.customCSSExternal]
+  #   # hash function: `openssl dgst -sha256 -binary $FILENAME | openssl base64 -A`
+  #   [[params.customCSSExternal.files]]
+  #     url  = "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+  #     hash = "sha256-<hash>"
+    
+  #   [[params.customCSSExternal.files]]
+  #     url  = "https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.4/css/bulma.min.css"
+  #     hash = "sha256-<hash>"
+
   customJS  = []
 
   # Toggle this option need to rebuild SCSS, requires extended version of Hugo
