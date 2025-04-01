@@ -60,6 +60,22 @@ jobs:
           HUGO_ENABLEMISSINGTRANSLATIONPLACEHOLDERS: true
           HUGO_MINIFY_TDEWOLFF_HTML_KEEPCOMMENTS: true
           
+      - name: Check Hugo site for duplicate nonce
+        run: |
+          declare -A seen_nonces
+          find ${OUTPUT_DIRECTORY} -type f -name "*.html" | while read -r file; do
+              grep -oP 'nonce="\K[^"]+' "$file" | while read -r nonce_value; do
+                  if [[ -n "${seen_nonces[$nonce_value]}" ]]; then
+                      echo "Duplicate nonce value '$nonce_value'"
+                      exit 1
+                  else
+                      seen_nonces["$nonce_value"]=1
+                  fi
+              done
+          done
+        env:
+          OUTPUT_DIRECTORY: "audit/"
+
       - name: Audit Hugo site (step 1)
         run: |
           if ! grep -iIrnE '<\!-- raw HTML omitted -->|ZgotmplZ|hahahugo|\[i18n\]|\(<nil>\)|\(&lt;nil&gt;\)' ${OUTPUT_DIRECTORY} > hugo-audit.log; then
