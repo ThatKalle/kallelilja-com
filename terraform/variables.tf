@@ -10,6 +10,80 @@ variable "statuscake_default_statuscodes" {
   default     = ["202", "404", "405"]
 }
 
+variable "default_issue_labels" {
+  description = "List of GitHub default issue labels."
+  type = map(object({
+    color       = string
+    description = string
+    name        = string
+  }))
+
+  default = {
+    "documentation" = {
+      color       = "0075ca"
+      description = "Improvements or additions to documentation"
+      name        = "documentation"
+    },
+    "help_wanted" = {
+      color       = "008672"
+      description = "Extra attention is needed"
+      name        = "help wanted"
+    },
+    "good_first_issue" = {
+      color       = "7057ff"
+      description = "Good for newcomers"
+      name        = "good first issue"
+    },
+    "enhancement" = {
+      color       = "a2eeef"
+      description = "New feature or request"
+      name        = "enhancement"
+    },
+    "duplicate" = {
+      color       = "cfd3d7"
+      description = "This issue or pull request already exists"
+      name        = "duplicate"
+    },
+    "bug" = {
+      color       = "d73a4a"
+      description = "Something isn't working"
+      name        = "bug"
+    },
+    "question" = {
+      color       = "d876e3"
+      description = "Further information is requested"
+      name        = "question"
+    },
+    "invalid" = {
+      color       = "e4e669"
+      description = "This doesn't seem right"
+      name        = "invalid"
+    },
+    "wontfix" = {
+      color       = "ffffff"
+      description = "This will not be worked on"
+      name        = "wontfix"
+    }
+  }
+}
+
+variable "dependabot_issue_labels" {
+  description = "List of GitHub dependabot issue labels."
+  type = map(object({
+    color       = string
+    description = string
+    name        = string
+  }))
+
+  default = {
+    "dependencies" = {
+      color       = "0366d6"
+      description = "Pull requests that update a dependency file"
+      name        = "dependencies"
+    }
+  }
+}
+
 # variable "dns_key_secret" {
 #   description = "A Base64-encoded string containing the shared secret to be used for TSIG."
 #   type        = string

@@ -135,6 +135,91 @@ resource "github_repository_deployment_branch_policy" "production" {
   name             = "main"
 }
 
+resource "github_issue_label" "default_issue_labels" {
+  for_each = var.default_issue_labels
+
+  repository = github_repository.kallelilja_com.name
+
+  color       = each.value.color
+  description = each.value.description
+  name        = replace(each.value.name, " ", "%20")
+}
+
+locals {
+  dependabot_issue_labels = {
+    "dependencies" = {
+      color       = "0366d6"
+      description = "Pull requests that update a dependency file"
+      name        = "dependencies"
+    },
+    "devcontainers_package_manager" = {
+      color       = "2753e3"
+      description = "Pull requests that update devcontainers_package_manager code"
+      name        = "devcontainers_package_manager"
+    },
+    "docker" = {
+      color       = "1d63ed"
+      description = "Pull requests that update docker code"
+      name        = "docker"
+    },
+    "github_actions" = {
+      color       = "2088ff"
+      description = "Pull requests that update github_actions code"
+      name        = "github_actions"
+    },
+    "terraform" = {
+      color       = "734bb7"
+      description = "Pull requests that update terraform code"
+      name        = "terraform"
+    }
+  }
+}
+
+resource "github_issue_label" "dependabot_issue_labels" {
+  for_each = merge(var.dependabot_issue_labels, local.dependabot_issue_labels)
+
+  repository = github_repository.kallelilja_com.name
+
+  color       = each.value.color
+  description = each.value.description
+  name        = each.value.name
+}
+
+# resource "github_issue_labels" "kallelilja_com" {
+#   repository = github_repository.kallelilja_com.name
+
+#   # Dependabot labels
+#   label {
+#     color       = "0366d6"
+#     description = "Pull requests that update a dependency file"
+#     name        = "dependencies"
+#   }
+
+#   label {
+#     color       = "2753e3"
+#     description = "Pull requests that update devcontainers_package_manager code"
+#     name        = "devcontainers_package_manager"
+#   }
+
+#   label {
+#     color       = "1d63ed"
+#     description = "Pull requests that update docker code"
+#     name        = "docker"
+#   }
+
+#   label {
+#     color       = "2088ff"
+#     description = "Pull requests that update github_actions code"
+#     name        = "github_actions"
+#   }
+
+#   label {
+#     color       = "734bb7"
+#     description = "Pull requests that update terraform code"
+#     name        = "terraform"
+#   }
+# }
+
 resource "github_repository_dependabot_security_updates" "dependabot_security_updates" {
   repository = github_repository.kallelilja_com.name
   enabled    = true
@@ -146,39 +231,9 @@ resource "github_repository_file" "dependabot_yml" {
   file                = ".github/dependabot.yml"
   content             = file("${path.module}/input/dependabot.yml")
   overwrite_on_create = true
-}
 
-resource "github_issue_labels" "kallelilja_com" {
-  repository = github_repository.kallelilja_com.name
-
-  # Dependabot labels
-  label {
-    name        = "dependencies"
-    color       = "0366D6"
-    description = "Pull requests that update a dependency file"
-  }
-
-  label {
-    name        = "devcontainers_package_manager"
-    color       = "2753E3"
-    description = "Pull requests that update devcontainers_package_manager code"
-  }
-
-  label {
-    name        = "docker"
-    color       = "1D63ED"
-    description = "Pull requests that update docker code"
-  }
-
-  label {
-    name        = "github_actions"
-    color       = "2088FF"
-    description = "Pull requests that update github_actions code"
-  }
-
-  label {
-    name        = "terraform"
-    color       = "734BB7"
-    description = "Pull requests that update terraform code"
-  }
+  depends_on = [
+    github_issue_label.dependabot_issue_labels["dependencies"],
+    github_repository_dependabot_security_updates.dependabot_security_updates
+  ]
 }
