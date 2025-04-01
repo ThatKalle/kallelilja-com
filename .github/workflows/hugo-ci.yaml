@@ -75,25 +75,25 @@ jobs:
 
             nonces_found=0
             grep -oP 'nonce="\K[^"]+' "$file" || true | while read -r nonce_value; do
-            echo "::debug::Found nonce: $nonce_value"
+              echo "::debug::Found nonce: $nonce_value"
 
-            if [[ -z "$nonce_value" ]]; then
-              echo "Empty nonce found in file: $file."
-              exit 1
-            fi
+              if [[ -z "$nonce_value" ]]; then
+                echo "Empty nonce found in file: $file."
+                exit 1
+              fi
 
-            if [[ -n "${seen_nonces[$nonce_value]}" ]]; then
-              echo "Duplicate nonce value '$nonce_value' found in file: $file"
-              exit 1
-            else
-              seen_nonces["$nonce_value"]=1
-            fi
+              if [[ -n "${seen_nonces[$nonce_value]}" ]]; then
+                echo "Duplicate nonce value '$nonce_value' found in file: $file"
+                exit 1
+              else
+                seen_nonces["$nonce_value"]=1
+              fi
 
-            nonces_found=1
+              nonces_found=1
             done
 
             if [[ $nonces_found -eq 0 ]]; then
-              echo "::debug::No nonces found in file $file."
+              echo "No nonces found in file $file."
             fi
             echo "::endgroup::"
           done
@@ -101,7 +101,6 @@ jobs:
           echo "Nonce check complete."
         env:
           OUTPUT_DIRECTORY: "audit/"
-          ACTIONS_RUNNER_DEBUG: true
 
       - name: Audit Hugo site (step 1)
         run: |
