@@ -3,9 +3,9 @@
 	"build": {
 		"dockerfile": "Dockerfile",
 		"args": {
-			"DOCKERIZE_VERSION": "v0.9.3",
+			"DOCKERIZE_VERSION": "v0.9.3", // https://github.com/jwilder/dockerize/releases
 			"DOCKERIZE_CHECKSUM": "b831009b186a71bea9d3b373dcd45e9372131a101750ff35da29fde35136d73b",
-			"TFPROVIDERCHECK_VERSION": "v1.0.3",
+			"TFPROVIDERCHECK_VERSION": "v1.0.3", // https://github.com/suzuki-shunsuke/tfprovidercheck/releases
 			"TFPROVIDERCHECK_CHECKSUM": "8132aa60ba845307e3a1ae33421d368e5bc3ccb3e6546ac6a141c3a9c794c45c"
 		}
 	},
@@ -25,12 +25,12 @@
 			"extended": true
 		},
 		"ghcr.io/devcontainers/features/terraform:1": {
-			"version": "latest",
-			"tflint": "latest",
+			"version": "v1.11.3", // https://github.com/hashicorp/terraform/releases
+			"tflint": "v0.55.1", // https://github.com/terraform-linters/tflint/releases
 			"terragrunt": "none"
 		},
 		"ghcr.io/dhoeric/features/trivy:1": {
-			"version": "latest"
+			"version": "v0.60.0" // https://github.com/aquasecurity/trivy/releases
 		},
 		"ghcr.io/marcozac/devcontainer-features/shellcheck:1": {
 			"version": "latest"
