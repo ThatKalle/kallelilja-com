@@ -118,12 +118,12 @@ gitCommit = ""
   # [params.customCSSExternal]
   #   # hash function: `openssl dgst -sha256 -binary $FILENAME | openssl base64 -A`
   #   [[params.customCSSExternal.files]]
-  #     url  = "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
-  #     hash = "sha256-<hash>"
+  #     url  = "https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+  #     hash = "sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
     
   #   [[params.customCSSExternal.files]]
-  #     url  = "https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.4/css/bulma.min.css"
-  #     hash = "sha256-<hash>"
+  #     url  = "https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css"
+  #     hash = "sha256-47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU="
 
   customJS  = []
 
