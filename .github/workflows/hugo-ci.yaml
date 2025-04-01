@@ -113,7 +113,7 @@ jobs:
           mv hugo-audit.log audit/hugo-audit.log
 
       - name: Upload Audit artifact
-        if: failure() && steps.audit.conclusion == 'failure'
+        if: failure()
         uses: actions/upload-pages-artifact@56afc609e74202658d3ffba0e8f6dda462b719fa # v3.0.1
         with:
           path: web/audit
