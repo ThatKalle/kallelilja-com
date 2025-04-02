@@ -48,6 +48,8 @@ jobs:
 
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@b9cd54a3c349d3f38e8881555d616ced269862dd # v3.1.2
+        with:
+          terraform_version: "1.11.3" # https://github.com/hashicorp/terraform/releases
 
       - name: Configure Terraform plugin cache
         run: |
@@ -66,7 +68,7 @@ jobs:
           terraform init \
            -backend-config="password=${TF_STATE_TOKEN}"
         env:
-          TF_STATE_TOKEN:       ${{ secrets.TF_STATE_TOKEN }}
+          TF_STATE_TOKEN: ${{ secrets.TF_STATE_TOKEN }}
 
       - name: Terraform Plan
         run: terraform plan -input=false
