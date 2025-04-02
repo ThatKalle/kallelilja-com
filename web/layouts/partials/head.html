@@ -38,12 +38,13 @@
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'{{ range $i, $nonce := $gaNonces }} 'nonce-{{ $nonce }}'{{ end }}{{ range $i, $nonce := $jsNonces }} 'nonce-{{ $nonce }}'{{ end }}; style-src 'self' 'unsafe-hashes'{{ range $i, $hash := $integrityHashes }} '{{ $hash }}'{{ end }}; object-src 'none'; base-uri 'self'; connect-src 'self' https://*.google-analytics.com; font-src 'self'; frame-src 'self'; img-src 'self' https://*.google-analytics.com https://*.googletagmanager.com; manifest-src 'self'; media-src 'self'; worker-src 'none';">
 {{ if .Params.noindex }}
 <meta name="robots" content="noindex" />
+{{ else}}
+<meta name="robots" content="noodp, noydir" />
 {{ end }}
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="author" content="{{ if .Site.Params.author }}{{ .Site.Params.author.name }}{{ else }}{{ range .Site.author }}{{ . }} {{ end }}{{ end }}">
 <meta name="description" content="{{ if .Site.Params.description }}{{ .Site.Params.description }}{{ else }}{{ .Summary | plainify }}{{ end }}" />
 <meta name="keywords" content="{{ .Site.Params.keywords }}{{ if .Params.tags }}{{ range .Params.tags }}, {{ . }}{{ end }}{{ end }}" />
-<meta name="robots" content="noodp" />
 <meta name="theme-color" content="{{ .Site.Params.favicon.color.theme }}" />
 <link rel="canonical" href="{{ .Permalink }}" />
 
