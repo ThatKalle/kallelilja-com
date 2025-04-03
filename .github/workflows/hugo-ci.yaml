@@ -44,9 +44,9 @@ jobs:
       - name: Build Hugo site for audit
         run: |
           hugo \
-           --destination "${OUTPUT_DIRECTORY}" \
            --gc \
-           --cleanDestinationDir
+           --cleanDestinationDir \
+           --destination "${OUTPUT_DIRECTORY}" \
           if [ ! -s "${OUTPUT_DIRECTORY}"/index.html ]; then
             echo "Missing output"
             exit 1
