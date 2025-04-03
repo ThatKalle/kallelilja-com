@@ -106,7 +106,7 @@ jobs:
       - name: Check Hugo audit site for nonce errors
         uses: ./.github/actions/check-nonce
         with:
-          directory: "audit/"
+          directory: "web/audit"
 
       - name: Audit Hugo site (step 1)
         run: |
