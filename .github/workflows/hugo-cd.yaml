@@ -67,7 +67,7 @@ jobs:
       - name: Check Hugo site for nonce errors
         uses: ./.github/actions/check-nonce
         with:
-          directory: "web/public"
+          directory: web/public
 
       - name: Add RSS Feed integrity
         run: |

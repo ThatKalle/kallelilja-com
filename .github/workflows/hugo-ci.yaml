@@ -45,6 +45,7 @@ jobs:
         run: |
           hugo \
            --gc \
+           --enableGitInfo \
            --cleanDestinationDir \
            --destination "${OUTPUT_DIRECTORY}"
           if [ ! -s "${OUTPUT_DIRECTORY}"/index.html ]; then
@@ -63,7 +64,7 @@ jobs:
       - name: Check Hugo audit site for nonce errors
         uses: ./.github/actions/check-nonce
         with:
-          directory: "web/audit"
+          directory: web/audit
 
       - name: Audit Hugo site (step 1)
         run: |
