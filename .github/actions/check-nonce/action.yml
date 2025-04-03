@@ -20,7 +20,9 @@ runs:
   using: "composite"
   steps:
     - name: Check for unique Nonce values (${{ inputs.directory }})
-      run: check-nonce.sh
+      run: |
+        chmod +x "${{ github.action_path }}/check-nonce.sh"
+        "${{ github.action_path }}/check-nonce.sh"
       shell: bash
       continue-on-error: ${{ inputs.continue-on-failure }}
       env:
