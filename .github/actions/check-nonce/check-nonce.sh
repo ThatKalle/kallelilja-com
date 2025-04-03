@@ -26,7 +26,7 @@ find "${TARGET_DIRECTORY}" -type f -name "*.html" | while read -r file; do
         else
             seen_nonces["$nonce_value"]=1
         fi
-    done < <(grep -oP 'nonce="?[^"\s>\\]+"?' "$file" 2>/dev/null)
+    done < <(grep -oP 'nonce="?[^"\s>\\]*"?(?=[\s>\\])' "$file" 2>/dev/null)
 
     if ! $nonces_found; then
         echo "No nonces found in file: $file."
