@@ -30,7 +30,7 @@
 			"terragrunt": "none"
 		},
 		"ghcr.io/dhoeric/features/trivy:1": {
-			"version": "0.60.0" // https://github.com/aquasecurity/trivy/releases
+			"version": "0.61.0" // https://github.com/aquasecurity/trivy/releases
 		},
 		"ghcr.io/marcozac/devcontainer-features/shellcheck:1": {
 			"version": "latest"
