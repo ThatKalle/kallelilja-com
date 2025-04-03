@@ -1,21 +1,31 @@
 # check nonce Action
 
-This GitHub Action finds all `.html` files in a given directory and checks to make sure all `nonce=""` values are unique.\
+This GitHub Action finds all `.html` files in a given directory and checks to make sure all `nonce=""` or `nonce=` values are unique and present.\
 [Nonce](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/nonce) is used by the [Content Security Policy (CSP)](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CSP) that helps to prevent or minimize the risk of certain types of security threats.
 
 ### Success
 
 ```html
-<script nonce="1456a72431b2733d7a4e4e6dadecbcb9">console.log("check-nonce")</script>
-<script nonce="cb9837a0450a4922461bde2a901b6895">console.log("check-nonce")</script>
+<!-- will succeed when all nonce values are unique -->
+<script nonce="noncevalue1">console.log("check-nonce")</script>
+<script nonce="noncevalue2">console.log("check-nonce")</script>
+...
+<script nonce="noncevalue99">console.log("check-nonce")</script>
 ```
 
 ### Failure
 
 ```html
-<script nonce="1456a72431b2733d7a4e4e6dadecbcb9">console.log("check-nonce")</script>
-<script nonce="1456a72431b2733d7a4e4e6dadecbcb9">console.log("check-nonce")</script>
+<!-- will fail if one more more nonce value is duplicated -->
+<script nonce="noncevalue1">console.log("check-nonce")</script>
+<script nonce="noncevalue1">console.log("check-nonce")</script>
+
+<!-- will also fail on empty value -->
+<script nonce="">console.log("check-nonce")</script>
 ```
+
+> Does match on both `nonce="$VALUE"` and `nonce=$VALUE`.\
+> _The symbol after the value should be ` `, `\` or `>`_.
 
 ## Usage
 
@@ -25,7 +35,7 @@ The following example step will query all `.html` files in the `web/public` dire
   - name: check nonce in public
     uses: ./.github/actions/check-nonce
     with:
-      directory: 'web/public'
+      directory: web/public
 ```
 
 ## Options
@@ -55,7 +65,7 @@ jobs:
 
     steps:
     - name: checkout repository
-      uses: actions/checkout@v4
+      uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
 
     - name: build website
       run: make build
@@ -63,7 +73,7 @@ jobs:
     - name: check nonce
       uses: ./.github/actions/check-nonce
       with:
-        directory: 'public'
+        directory: public
 
     - name: deploy website
       run: make deploy
