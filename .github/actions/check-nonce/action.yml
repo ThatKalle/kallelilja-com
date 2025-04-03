@@ -1,0 +1,27 @@
+name: check nonce
+author: Kalle Lilja
+description: Recursively scan a directory for `.html` files to ensure unique nonce values.
+
+branding:
+  color: green
+  icon: code
+
+inputs:
+  directory:
+    description: Directory to scan for .html files.
+    required: false
+    default: '.'
+  continue-on-failure:
+    description: Whether the workflow run should fail when unique nonce values are detected.
+    required: false
+    default: "false"
+
+runs:
+  using: "composite"
+  steps:
+    - name: Check for unique Nonce values (${{ inputs.directory }})
+      run: check-nonce.sh
+      shell: bash
+      continue-on-error: ${{ inputs.continue-on-failure }}
+      env:
+        TARGET_DIRECTORY: ${{ inputs.directory }}
