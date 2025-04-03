@@ -1,15 +1,17 @@
-format: table
-
-scan:
+scan: # trivy filesystem
   scanners:
     - misconfig
     - secret
+    - vuln
 
   skip-dirs:
     - "/home/vscode/.vscode-server/**"
     - "/home/vscode/.oh-my-zsh/**"
 
-misconfiguration:
+misconfiguration: # trivy config
   scanners:
-    - terraform
     - dockerfile
+    - terraform
+
+ignorefile: ".trivyignore.yaml"
+format: table
