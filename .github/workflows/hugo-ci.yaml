@@ -46,7 +46,7 @@ jobs:
           hugo \
            --gc \
            --cleanDestinationDir \
-           --destination "${OUTPUT_DIRECTORY}" \
+           --destination "${OUTPUT_DIRECTORY}"
           if [ ! -s "${OUTPUT_DIRECTORY}"/index.html ]; then
             echo "Missing output"
             exit 1
