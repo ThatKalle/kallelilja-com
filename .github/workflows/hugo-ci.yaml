@@ -104,7 +104,7 @@ jobs:
       #     OUTPUT_DIRECTORY: "audit/"
 
       - name: Check Hugo audit site for nonce errors
-        uses: ./.github/workflows/actions/check-nonce
+        uses: ./.github/actions/check-nonce
         with:
           directory: "audit/"
 
