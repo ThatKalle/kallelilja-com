@@ -64,6 +64,11 @@ jobs:
           URL: "https://kallelilja.com"
           HUGO_PARAMS_gitCommit: ${{ steps.git-sha.outputs.output }}
 
+      - name: Check Hugo site for nonce errors
+        uses: ./.github/actions/check-nonce
+        with:
+          directory: "web/public"
+
       - name: Add RSS Feed integrity
         run: |
           INTEGRITY_HASH=$(openssl dgst -sha384 -binary "public/index.xml" | openssl base64 -A)
