@@ -23,7 +23,7 @@ The following example step will query all `.html` files in the directory `src` r
 
 ```yml
   - name: check nonce in public
-    uses: ./.github/workflows/actions/check-nonce
+    uses: ./.github/actions/check-nonce
     with:
       directory: 'src'
 ```
@@ -61,7 +61,7 @@ jobs:
       run: make build
 
     - name: check nonce
-      uses: ./.github/workflows/actions/check-nonce
+      uses: ./.github/actions/check-nonce
       with:
         directory: 'public'
 
