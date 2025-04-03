@@ -19,13 +19,13 @@ This GitHub Action finds all `.html` files in a given directory and checks to ma
 
 ## Usage
 
-The following example step will query all `.html` files in the directory `src` relative to the current path.
+The following example step will query all `.html` files in the `web/public` directory.
 
 ```yml
   - name: check nonce in public
     uses: ./.github/actions/check-nonce
     with:
-      directory: 'src'
+      directory: 'web/public'
 ```
 
 ## Options

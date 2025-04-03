@@ -12,7 +12,7 @@ inputs:
     required: false
     default: ${{ github.workspace }}
   continue-on-failure:
-    description: Whether the workflow run should fail when unique nonce values are detected.
+    description: Whether the action run should fail when duplicate or missing nonce values are detected.
     required: false
     default: ${{ false }}
 
