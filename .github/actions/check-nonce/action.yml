@@ -10,11 +10,11 @@ inputs:
   directory:
     description: Directory to scan for .html files.
     required: false
-    default: '.'
+    default: ${{ github.workspace }}
   continue-on-failure:
     description: Whether the workflow run should fail when unique nonce values are detected.
     required: false
-    default: "false"
+    default: ${{ false }}
 
 runs:
   using: "composite"
