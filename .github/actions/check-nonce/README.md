@@ -16,7 +16,7 @@ This GitHub Action finds all `.html` files in a given directory and checks to ma
 ### Failure
 
 ```html
-<!-- will fail if one more more nonce value is duplicated -->
+<!-- will fail if nonce values are duplicated -->
 <script nonce="noncevalue1">console.log("check-nonce")</script>
 <script nonce="noncevalue1">console.log("check-nonce")</script>
 
