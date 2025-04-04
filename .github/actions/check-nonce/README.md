@@ -78,3 +78,19 @@ jobs:
     - name: deploy website
       run: make deploy
 ```
+
+# Test
+
+Tests can be performed using [Bash Automated Testing System](https://github.com/bats-core/bats-core).
+
+```shell
+.github/actions/check-nonce $ bats check-nonce.test.bats 
+check-nonce.test.bats
+ ✓ Empty file should be skipped
+ ✓ File with empty nonce should trigger an error
+ ✓ File with empty nonce (no quotes) should trigger an error
+ ✓ Duplicate nonce should trigger an error
+ ✓ File with unique nonces should be successful
+
+5 tests, 0 failures
+```
