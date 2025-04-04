@@ -38,17 +38,7 @@ jobs:
         run: echo "output=$(git rev-parse --short HEAD)" >> "$GITHUB_OUTPUT"
 
       - name: Setup Hugo
-        uses: peaceiris/actions-hugo@75d2e84710de30f6ff7268e08f310b60ef14033f # v3.0.0
-        with:
-          hugo-version: '0.145.0' # https://github.com/gohugoio/hugo/releases
-          extended: true
-
-      - name: Cache Hugo modules
-        uses: actions/cache@5a3ec84eff668545956fd18022155c47e93e2684 # v4.2.3
-        with:
-          path: ${{ runner.temp }}/hugo_cache
-          key: hugomod-${{ runner.os }}-${{ hashFiles('**/go.sum') }}
-          restore-keys: hugomod-${{ runner.os }}-
+        uses: ./.github/actions/setup-hugo
 
       - name: Build with Hugo
         run: |
