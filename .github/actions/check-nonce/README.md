@@ -86,11 +86,15 @@ Tests can be performed using [Bash Automated Testing System](https://github.com/
 ```shell
 .github/actions/check-nonce $ bats check-nonce.test.bats 
 check-nonce.test.bats
- ✓ Empty file should be skipped
+ ✓ Zero file should be skipped
+ ✓ Empty file should be successful
+ ✓ File without nonce should be successful
  ✓ File with empty nonce should trigger an error
  ✓ File with empty nonce (no quotes) should trigger an error
  ✓ Duplicate nonce should trigger an error
+ ✓ Duplicate nonce (no quotes) should trigger an error
  ✓ File with unique nonces should be successful
+ ✓ File with unique nonces (no quotes) should be successful
 
-5 tests, 0 failures
+9 tests, 0 failures
 ```
