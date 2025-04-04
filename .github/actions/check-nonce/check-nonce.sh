@@ -1,7 +1,7 @@
 declare -A seen_nonces
 echo "Checking for nonces in directory: ${TARGET_DIRECTORY}."
 
-find "${TARGET_DIRECTORY}" -type f -name "*.html" | while read -r file; do
+while read -r file; do
     echo "::group::Checking file: $file."
     nonces_found=false
 
@@ -28,11 +28,18 @@ find "${TARGET_DIRECTORY}" -type f -name "*.html" | while read -r file; do
         fi
     done < <(grep -oP 'nonce="?[^"\s>\\]*"?(?=[\s>\\])' "$file" 2>/dev/null)
 
+    if [ $? -eq 1 ]; then
+        exit 1
+    fi
+    
     if ! $nonces_found; then
         echo "No nonces found in file: $file."
     else
         echo "Only unique nonces found in file: $file."
     fi
     echo "::endgroup::"
-done
+done < <(find "${TARGET_DIRECTORY}" -type f -name "*.html")
+if [ $? -eq 1 ]; then
+    exit 1
+fi
 echo "Check nonce complete!"
