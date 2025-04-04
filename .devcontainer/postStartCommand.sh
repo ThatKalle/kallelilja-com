@@ -10,7 +10,7 @@ cd ..
 echo "Terraform: $(terraform --version | awk 'NR==1 {print $2}')"
 echo "TFLint: $(tflint --version | awk 'NR==1 {print $3}')"
 echo "tfprovidercheck: $(tfprovidercheck --version | awk 'NR==1 {print $3}')"
-echo "Trivy: $(trivy --version | awk 'NR==1 {print $2}')"
+echo "Trivy: $(trivy --version -q | awk 'NR==1 {print $2}')"
 echo "Actionlint: $(actionlint --version | awk 'NR==1 {print $1}')"
 echo "ShellCheck: $(shellcheck --version | awk 'NR==2 {print $2}')"
 echo "Dockerize: $(dockerize --version)"
