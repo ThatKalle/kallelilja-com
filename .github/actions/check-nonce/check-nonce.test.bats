@@ -2,67 +2,68 @@
 
 setup() {
     export TARGET_DIRECTORY="$(pwd)"
+    TEST_FILE="${TARGET_DIRECTORY}/testfile.html"
+    if [[ -f "${TEST_FILE}" ]]; then rm "${TEST_FILE}"; fi
 }
 
 @test "Empty file should be skipped" {
-    if [[ -f "${TARGET_DIRECTORY}/testfile.html" ]]; then rm "${TARGET_DIRECTORY}/testfile.html"; fi
-    touch "${TARGET_DIRECTORY}/testfile.html"
+    touch "${TEST_FILE}"
     run ./check-nonce.sh
     [ "$status" -eq 0 ]
 }
 
 @test "File with empty nonce should trigger an error" {
-    if [[ -f "${TARGET_DIRECTORY}/testfile.html" ]]; then rm "${TARGET_DIRECTORY}/testfile.html"; fi
-    echo "<script nonce=\"\" src=\"https://localhost\"></script>" > "${TARGET_DIRECTORY}/testfile.html"
+    echo "<script nonce=\"\" src=\"https://localhost\"></script>" > "${TEST_FILE}"
+
     run ./check-nonce.sh
     [ "$status" -eq 1 ]
     [[ "${output}" =~ "Empty nonce found in file" ]]
 }
 
 @test "File with empty nonce (no quotes) should trigger an error" {
-    if [[ -f "${TARGET_DIRECTORY}/testfile.html" ]]; then rm "${TARGET_DIRECTORY}/testfile.html"; fi
-    echo "<script nonce= src=https://localhost></script>" > "${TARGET_DIRECTORY}/testfile.html"
+    echo "<script nonce= src=https://localhost></script>" > "${TEST_FILE}"
+
     run ./check-nonce.sh
     [ "$status" -eq 1 ]
     [[ "${output}" =~ "Empty nonce found in file" ]]
 }
 
 @test "Duplicate nonce should trigger an error" {
-    if [[ -f "${TARGET_DIRECTORY}/testfile.html" ]]; then rm "${TARGET_DIRECTORY}/testfile.html"; fi
-    echo "<script nonce=\"noncevalue\" src=\"https://localhost\"></script>" > "${TARGET_DIRECTORY}/testfile.html"
-    echo "<script nonce=\"noncevalue\" src=\"https://localhost\"></script>" >> "${TARGET_DIRECTORY}/testfile.html"
+    echo "<script nonce=\"noncevalue\" src=\"https://localhost\"></script>" > "${TEST_FILE}"
+    echo "<script nonce=\"noncevalue\" src=\"https://localhost\"></script>" >> "${TEST_FILE}"
+
     run ./check-nonce.sh
     [ "$status" -eq 1 ]
     [[ "${output}" =~ "Duplicate nonce value" ]]
 }
 
 @test "Duplicate nonce (no quotes) should trigger an error" {
-    if [[ -f "${TARGET_DIRECTORY}/testfile.html" ]]; then rm "${TARGET_DIRECTORY}/testfile.html"; fi
-    echo "<script nonce=noncevalue src=https://localhost></script>" > "${TARGET_DIRECTORY}/testfile.html"
-    echo "<script nonce=noncevalue src=https://localhost></script>" >> "${TARGET_DIRECTORY}/testfile.html"
+    echo "<script nonce=noncevalue src=https://localhost></script>" > "${TEST_FILE}"
+    echo "<script nonce=noncevalue src=https://localhost></script>" >> "${TEST_FILE}"
+
     run ./check-nonce.sh
     [ "$status" -eq 1 ]
     [[ "${output}" =~ "Duplicate nonce value" ]]
 }
 
 @test "File with unique nonces should be successful" {
-    if [[ -f "${TARGET_DIRECTORY}/testfile.html" ]]; then rm "${TARGET_DIRECTORY}/testfile.html"; fi
-    echo "<script nonce=\"noncevalue1\" src=\"https://localhost\"></script>" > "${TARGET_DIRECTORY}/testfile.html"
-    echo "<script nonce=\"noncevalue2\" src=\"https://localhost\"></script>" >> "${TARGET_DIRECTORY}/testfile.html"
+    echo "<script nonce=\"noncevalue1\" src=\"https://localhost\"></script>" > "${TEST_FILE}"
+    echo "<script nonce=\"noncevalue2\" src=\"https://localhost\"></script>" >> "${TEST_FILE}"
+
     run ./check-nonce.sh
     [ "$status" -eq 0 ]
     [[ "${output}" =~ "Only unique nonces found in file" ]]
 }
 
 @test "File with unique nonces (no quotes) should be successful" {
-    if [[ -f "${TARGET_DIRECTORY}/testfile.html" ]]; then rm "${TARGET_DIRECTORY}/testfile.html"; fi
-    echo "<script nonce=noncevalue1 src=https://localhost></script>" > "${TARGET_DIRECTORY}/testfile.html"
-    echo "<script nonce=noncevalue2 src=https://localhost></script>" >> "${TARGET_DIRECTORY}/testfile.html"
+    echo "<script nonce=noncevalue1 src=https://localhost></script>" > "${TEST_FILE}"
+    echo "<script nonce=noncevalue2 src=https://localhost></script>" >> "${TEST_FILE}"
+    
     run ./check-nonce.sh
     [ "$status" -eq 0 ]
     [[ "${output}" =~ "Only unique nonces found in file" ]]
 }
 
 teardown() {
-    if [[ -f "${TARGET_DIRECTORY}/testfile.html" ]]; then rm "${TARGET_DIRECTORY}/testfile.html"; fi
+    if [[ -f "${TEST_FILE}" ]]; then rm "${TEST_FILE}"; fi
 }
