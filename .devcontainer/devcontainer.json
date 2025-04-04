@@ -78,6 +78,7 @@
 					"editor.detectIndentation": false
 				},
 				"cSpell.language": "en",
+				"cSpell.reportUnknownWords": false,
 				"cSpell.ignorePaths": [
 					"vscode-extension",
 					".git/{info,lfs,logs,refs,objects}/**",
@@ -89,6 +90,7 @@
 				],
 				"cSpell.words": [
 					"kalle",
+					"lilja",
 					"kallelilja",
 					"thatkalle"
 				],
