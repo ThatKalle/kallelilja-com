@@ -6,10 +6,26 @@ setup() {
     if [[ -f "${TEST_FILE}" ]]; then rm "${TEST_FILE}"; fi
 }
 
-@test "Empty file should be skipped" {
+@test "Zero file should be skipped" {
     touch "${TEST_FILE}"
     run ./check-nonce.sh
     [ "$status" -eq 0 ]
+    [[ "${output}" =~ "is empty or cannot be read. Skipping." ]]
+}
+
+@test "Empty file should be successful" {
+    echo "" > "${TEST_FILE}"
+    run ./check-nonce.sh
+    [ "$status" -eq 0 ]
+    [[ "${output}" =~ "No nonces found in file" ]]
+}
+
+@test "File without nonce should be successful" {
+    echo "<script src=\"https://localhost\"></script>" > "${TEST_FILE}"
+
+    run ./check-nonce.sh
+    [ "$status" -eq 0 ]
+    [[ "${output}" =~ "No nonces found in file" ]]
 }
 
 @test "File with empty nonce should trigger an error" {
