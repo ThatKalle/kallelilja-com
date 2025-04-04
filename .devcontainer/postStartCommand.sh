@@ -15,6 +15,7 @@ echo "Actionlint: $(actionlint --version | awk 'NR==1 {print $1}')"
 echo "ShellCheck: $(shellcheck --version | awk 'NR==2 {print $2}')"
 echo "Dockerize: $(dockerize --version)"
 echo "Hugo: $(hugo version | awk 'NR==1 {print $2}')"
+echo "Bats: $(bats --version | awk 'NR==1 {print $2}')"
 
 cd web/
 if [ -f "nohup.out" ]; then rm nohup.out; fi
