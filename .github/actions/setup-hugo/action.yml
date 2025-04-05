@@ -1,5 +1,5 @@
 name: setup-hugo
-description: Install and caches Hugo
+description: Install and Cache Hugo
 
 inputs:
   hugo-version:
