@@ -5,8 +5,8 @@
 		"args": {
 			"DOCKERIZE_VERSION": "v0.9.3", // https://github.com/jwilder/dockerize/releases
 			"DOCKERIZE_CHECKSUM": "b831009b186a71bea9d3b373dcd45e9372131a101750ff35da29fde35136d73b",
-			"TFPROVIDERCHECK_VERSION": "v1.0.3", // https://github.com/suzuki-shunsuke/tfprovidercheck/releases
-			"TFPROVIDERCHECK_CHECKSUM": "8132aa60ba845307e3a1ae33421d368e5bc3ccb3e6546ac6a141c3a9c794c45c",
+			"TFPROVIDERCHECK_VERSION": "v1.0.4", // https://github.com/suzuki-shunsuke/tfprovidercheck/releases  tfprovidercheck_linux_amd64.tar.gz
+			"TFPROVIDERCHECK_CHECKSUM": "0adf02dcb8ca9ad07986f880347ebc348a73b850d8b8b8477b7fa5d5147c0b61",
 			"BATS_VERSION": "v1.11.1", // https://github.com/bats-core/bats-core/releases
 			"BATS_CHECKSUM": "5c57ed9616b78f7fd8c553b9bae3c7c9870119edd727ec17dbd1185c599f79d9"
 		}
