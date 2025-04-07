@@ -35,7 +35,7 @@
 <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=()">
 <meta http-equiv="X-XSS-Protection" content="1; mode=block">
 <meta http-equiv="X-Content-Type-Options" content="nosniff">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'{{ range $i, $nonce := $gaNonces }} 'nonce-{{ $nonce }}'{{ end }}{{ range $i, $nonce := $jsNonces }} 'nonce-{{ $nonce }}'{{ end }}; style-src 'self' 'unsafe-hashes'{{ range $i, $hash := $integrityHashes }} '{{ $hash }}'{{ end }}; object-src 'none'; base-uri 'self'; connect-src 'self' https://*.google-analytics.com; font-src 'self'; frame-src 'self'; img-src 'self' https://*.google-analytics.com https://*.googletagmanager.com; manifest-src 'self'; media-src 'self'; worker-src 'none';">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'{{ range $i, $nonce := $gaNonces }} 'nonce-{{ $nonce }}'{{ end }}{{ range $i, $nonce := $jsNonces }} 'nonce-{{ $nonce }}'{{ end }}; style-src 'self' 'unsafe-hashes'{{ range $i, $hash := $integrityHashes }} '{{ $hash }}'{{ end }}; object-src 'none'; base-uri 'self'; connect-src 'self' https://*.google-analytics.com; font-src 'self'; frame-src 'self'; img-src 'self' https://*.google-analytics.com https://*.googletagmanager.com; manifest-src 'self'; media-src 'self'; worker-src 'none';">
 {{ if .Params.noindex }}
 <meta name="robots" content="noindex" />
 {{ else}}
