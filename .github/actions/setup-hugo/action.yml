@@ -18,9 +18,10 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - run-name: Set Hugo Cache Directory
+    - name: Set Hugo Cache Directory
       shell: bash
       run: |
+        # Set Hugo Cache Directory
         if [ -z "${{ inputs.hugo-cachedir }}" ]; then
           echo "HUGO_CACHEDIR=${{ runner.temp }}/hugo_cache" >> $GITHUB_ENV
         else
