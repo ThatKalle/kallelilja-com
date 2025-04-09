@@ -32,8 +32,10 @@ runs:
       if: ${{ inputs.cache }}
       shell: bash
       run: |
-        echo "TF_PLUGIN_CACHE_DIR=${HOME}/.terraform.d/plugin-cache" >> "$GITHUB_ENV"
+        # Set Terraform Cache Directory
+        TF_PLUGIN_CACHE_DIR="${HOME}/.terraform.d/plugin-cache"
         mkdir --parents "${TF_PLUGIN_CACHE_DIR}"
+        echo "TF_PLUGIN_CACHE_DIR=${TF_PLUGIN_CACHE_DIR}" >> "$GITHUB_ENV"
 
     - name: Cache Terraform
       if: ${{ inputs.cache }}
