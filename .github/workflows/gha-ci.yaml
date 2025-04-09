@@ -3,7 +3,8 @@ name: '🩺 GitHub Actions - Continuous Integration (CI)'
 on:
   pull_request:
     paths: 
-      - '.github/workflows/*.{yml,yaml}'
+      - '.github/workflows/*.yml'
+      - '.github/workflows/*.yaml'
   workflow_dispatch:
 
 permissions:
