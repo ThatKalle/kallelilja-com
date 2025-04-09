@@ -7,9 +7,9 @@ inputs:
     required: false
     default: '0.145.0' # https://github.com/gohugoio/hugo/releases
   hugo-cachedir:
-    description: 'path to Hugo cache. Defaults to `${{ runner.temp }}/hugo_cache`.'
+    description: path to Hugo cache.
     required: false
-    default: ''
+    default: '' # Set to `${{ runner.temp }}/hugo_cache` at runtime.
   extended:
     description: Install Hugo extended?
     required: false
