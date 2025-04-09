@@ -37,6 +37,8 @@ jobs:
     - name: Setup Hugo
       if: matrix.language == 'javascript-typescript'
       uses: ./.github/actions/setup-hugo
+      with:
+        hugo-cachedir: ${{ runner.temp }}/hugo_cache
 
     - name: Initialize CodeQL
       uses: github/codeql-action/init@45775bd8235c68ba998cffa5171334d58593da47 # v3.28.15
