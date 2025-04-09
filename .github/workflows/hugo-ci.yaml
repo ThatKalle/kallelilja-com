@@ -97,3 +97,6 @@ jobs:
         with:
           path: web/audit
           name: github-pages-audit
+
+      - name: TEST
+        run: echo 'test'
