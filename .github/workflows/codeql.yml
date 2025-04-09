@@ -31,56 +31,56 @@ jobs:
           build-mode: none
 
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+      - name: Checkout repository
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
 
-    - name: Setup Hugo
-      if: matrix.language == 'javascript-typescript'
-      uses: ./.github/actions/setup-hugo
-      with:
-        hugo-cachedir: ${{ runner.temp }}/hugo_cache
+      - name: Setup Hugo
+        if: matrix.language == 'javascript-typescript'
+        uses: ./.github/actions/setup-hugo
+        with:
+          hugo-cachedir: ${{ runner.temp }}/hugo_cache
 
-    - name: Initialize CodeQL
-      uses: github/codeql-action/init@45775bd8235c68ba998cffa5171334d58593da47 # v3.28.15
-      with:
-        languages: ${{ matrix.language }}
-        build-mode: ${{ matrix.build-mode }}
-        config-file: '.github/codeql-config.yml'
-    
-    - name: Build with Hugo
-      if: matrix.language == 'javascript-typescript'
-      run: |
-        hugo \
-          --gc \
-          --minify \
-          --enableGitInfo \
-          --baseURL "${URL}"
-      shell: bash
-      working-directory: web
-      env:
-        HUGO_CACHEDIR: ${{ runner.temp }}/hugo_cache
-        HUGO_ENVIRONMENT: production
-        TZ: Europe/Stockholm
-        URL: "https://kallelilja.com"
-        HUGO_PARAMS_gitCommit: 'codeql'
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@45775bd8235c68ba998cffa5171334d58593da47 # v3.28.15
+        with:
+          languages: ${{ matrix.language }}
+          build-mode: ${{ matrix.build-mode }}
+          config-file: '.github/codeql-config.yml'
+      
+      - name: Build with Hugo
+        if: matrix.language == 'javascript-typescript'
+        run: |
+          hugo \
+            --gc \
+            --minify \
+            --enableGitInfo \
+            --baseURL "${URL}"
+        shell: bash
+        working-directory: web
+        env:
+          HUGO_CACHEDIR: ${{ runner.temp }}/hugo_cache
+          HUGO_ENVIRONMENT: production
+          TZ: Europe/Stockholm
+          URL: "https://kallelilja.com"
+          HUGO_PARAMS_gitCommit: 'codeql'
 
-    - name: Perform CodeQL Analysis
-      uses: github/codeql-action/analyze@45775bd8235c68ba998cffa5171334d58593da47 # v3.28.15
-      with:
-        category: "/language:${{ matrix.language }}"
-        output: sarif-results
-        upload: failure-only
+      - name: Perform CodeQL Analysis
+        uses: github/codeql-action/analyze@45775bd8235c68ba998cffa5171334d58593da47 # v3.28.15
+        with:
+          category: "/language:${{ matrix.language }}"
+          output: sarif-results
+          upload: failure-only
 
-    - name: filter-sarif - javascript-typescript
-      if: matrix.language == 'javascript-typescript'
-      uses: advanced-security/filter-sarif@f3b8118a9349d88f7b1c0c488476411145b6270d #  v1.0.1
-      with:
-        patterns: |
-          -**/*.js:js/regex/missing-regexp-anchor
-        input: "sarif-results/javascript.sarif"
-        output: "sarif-results/${{ matrix.language }}.sarif"
+      - name: filter-sarif - javascript-typescript
+        if: matrix.language == 'javascript-typescript'
+        uses: advanced-security/filter-sarif@f3b8118a9349d88f7b1c0c488476411145b6270d #  v1.0.1
+        with:
+          patterns: |
+            -**/*.js:js/regex/missing-regexp-anchor
+          input: "sarif-results/javascript.sarif"
+          output: "sarif-results/${{ matrix.language }}.sarif"
 
-    - name: Upload CodeQL sarif
-      uses: github/codeql-action/upload-sarif@45775bd8235c68ba998cffa5171334d58593da47 # v3.28.15
-      with:
-        sarif_file: "sarif-results/${{ matrix.language }}.sarif"
+      - name: Upload CodeQL sarif
+        uses: github/codeql-action/upload-sarif@45775bd8235c68ba998cffa5171334d58593da47 # v3.28.15
+        with:
+          sarif_file: "sarif-results/${{ matrix.language }}.sarif"
