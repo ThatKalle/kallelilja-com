@@ -5,11 +5,19 @@ inputs:
   terraform_version:
     description: The version of Terraform CLI to install.
     required: false
-    default: "1.11.3" # https://github.com/hashicorp/terraform/releases
+    default: '1.11.3' # https://github.com/hashicorp/terraform/releases
   terraform_wrapper:
     description: Install the wrapper for the `terraform` binary. Defaults to `true`.
     required: false
     default: ${{ true }}
+  cache:
+    description: Cache Terraform? Defaults to `true`.
+    required: false
+    default: ${{ true }}
+  terraform_lock_file:
+    description: Path to .terraform.lock.hcl used for cache. Defaults to `**/.terraform.lock.hcl`.
+    required: false
+    default: '**/.terraform.lock.hcl'
 
 runs:
   using: "composite"
@@ -21,14 +29,16 @@ runs:
         terraform_wrapper: ${{ inputs.terraform_wrapper }}
 
     - name: Configure Terraform plugin cache
+      if: ${{ inputs.cache }}
       shell: bash
       run: |
-        echo "TF_PLUGIN_CACHE_DIR=${HOME}/.terraform.d/plugin-cache" >>"$GITHUB_ENV"
-        mkdir --parents "${HOME}/.terraform.d/plugin-cache"
+        echo "TF_PLUGIN_CACHE_DIR=${HOME}/.terraform.d/plugin-cache" >> "$GITHUB_ENV"
+        mkdir --parents "${TF_PLUGIN_CACHE_DIR}"
 
     - name: Cache Terraform
+      if: ${{ inputs.cache }}
       uses: actions/cache@5a3ec84eff668545956fd18022155c47e93e2684 # v4.2.3
       with:
-        path: ~/.terraform.d/plugin-cache
-        key: terraform-${{ runner.os }}-${{ hashFiles('terraform/.terraform.lock.hcl') }}
+        path: ${{ env.TF_PLUGIN_CACHE_DIR }}
+        key: terraform-${{ runner.os }}-${{ hashFiles(inputs.terraform_lock_file) }}
         restore-keys: terraform-${{ runner.os }}-

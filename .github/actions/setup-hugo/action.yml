@@ -6,26 +6,31 @@ inputs:
     description: Version of Hugo to install.
     required: false
     default: '0.145.0' # https://github.com/gohugoio/hugo/releases
-  hugo-cachedir:
-    description: path to Hugo cache.
-    required: false
-    default: '' # Set to `${{ runner.temp }}/hugo_cache` at runtime.
   extended:
     description: Install Hugo extended?
     required: false
     default: ${{ true }}
+  cache:
+    description: Cache Hugo modules? Defaults to `true`.
+    required: false
+    default: ${{ true }}
+  hugo-cachedir:
+    description: Path to Hugo cache.
+    required: false
+    default: '' # Set to `${{ runner.temp }}/hugo_cache` at runtime.
 
 runs:
   using: "composite"
   steps:
     - name: Set Hugo Cache Directory
+      if: ${{ inputs.cache }}
       shell: bash
       run: |
         # Set Hugo Cache Directory
         if [ -z "${{ inputs.hugo-cachedir }}" ]; then
-          echo "HUGO_CACHEDIR=${{ runner.temp }}/hugo_cache" >> $GITHUB_ENV
+          echo "HUGO_CACHEDIR=${{ runner.temp }}/hugo_cache" >> "$GITHUB_ENV"
         else
-          echo "HUGO_CACHEDIR=${{ inputs.hugo-cachedir }}" >> $GITHUB_ENV
+          echo "HUGO_CACHEDIR=${{ inputs.hugo-cachedir }}" >> "$GITHUB_ENV"
         fi
 
     - name: Setup Hugo
@@ -35,6 +40,7 @@ runs:
         extended: ${{ inputs.extended }}
 
     - name: Cache Hugo modules
+      if: ${{ inputs.cache }}
       uses: actions/cache@5a3ec84eff668545956fd18022155c47e93e2684 # v4.2.3
       with:
         path: ${{ env.HUGO_CACHEDIR }}
