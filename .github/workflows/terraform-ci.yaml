@@ -37,6 +37,7 @@ jobs:
       - name: Setup Terraform
         uses: ./.github/actions/setup-terraform
         with:
+          cache: true
           terraform_lock_file: 'terraform/.terraform.lock.hcl'
 
       - name: Terraform Init

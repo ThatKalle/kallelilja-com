@@ -40,6 +40,7 @@ jobs:
       - name: Setup Hugo
         uses: ./.github/actions/setup-hugo
         with:
+          cache: true
           hugo-cachedir: ${{ runner.temp }}/hugo_cache
 
       - name: Build with Hugo
