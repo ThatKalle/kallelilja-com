@@ -5,7 +5,7 @@ inputs:
   terraform_version:
     description: The version of Terraform CLI to install.
     required: false
-    default: '1.11.3' # https://github.com/hashicorp/terraform/releases
+    default: '1.11.4' # https://github.com/hashicorp/terraform/releases
   terraform_wrapper:
     description: Install the wrapper for the `terraform` binary. Defaults to `true`.
     required: false
