@@ -1,3 +1,6 @@
 name: "CodeQL configuration"
 queries: 
   - uses: security-extended
+packs:
+  # JavaScript / Typescript
+  - githubsecuritylab/codeql-javascript-queries
