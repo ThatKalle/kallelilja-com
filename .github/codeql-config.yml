@@ -1,6 +1,10 @@
 name: "CodeQL configuration"
+
+disable-default-queries: false
+
 queries: 
   - uses: security-extended
+
 packs:
-  # JavaScript / Typescript
-  - githubsecuritylab/codeql-javascript-queries
+  javascript:
+    - githubsecuritylab/codeql-javascript-queries
