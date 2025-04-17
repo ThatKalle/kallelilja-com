@@ -1,7 +1,7 @@
 ---
 title: "Workaround: XTU – attempted to install on an unsupported platform"
 Description: Huawei Matebook X Pro - i7-8550U
-date: 2018-12-01T12:00:00Z
+date: 2018-12-06T12:00:00Z
 draft: false
 toc: false
 readingtime: false
