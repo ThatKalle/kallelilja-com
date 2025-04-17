@@ -35,7 +35,7 @@ gitCommit = ""
 
 [privacy]
   [privacy.googleAnalytics]
-    disable = false
+    disable = true
     respectDoNotTrack = true
 
 [services]
@@ -46,7 +46,7 @@ gitCommit = ""
 #   [services.disqus]
 #     shortname = 'your-disqus-shortname'
   [services.googleAnalytics]
-    ID = 'G-BEGB6LZPGP'
+    ID = 'UA-2345678-90'
 
 [permalinks]
   posts = "/posts/:year/:month/:title/"
