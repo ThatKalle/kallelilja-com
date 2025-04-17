@@ -21,7 +21,7 @@
 			"version": "latest"
 		},
 		"ghcr.io/devcontainers/features/hugo:1": {
-			"version": "0.146.3", // https://github.com/gohugoio/hugo/releases
+			"version": "0.146.5", // https://github.com/gohugoio/hugo/releases
 			"extended": true
 		},
 		"ghcr.io/devcontainers/features/terraform:1": {
