@@ -1,3 +1,4 @@
+@import "variables";
 @import "customvariables";
 
 .logo__link {
@@ -12,4 +13,8 @@
 
 .portrait {
     max-width: 250px !important;
+}
+
+em, strong {
+    color: inherit !important;
 }

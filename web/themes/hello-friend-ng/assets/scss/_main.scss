@@ -284,7 +284,15 @@ pre {
 }
 
 blockquote {
-  border-left: 3px solid #3eb0ef;
+  border-left: 3px solid $dark-border-color;
+  // border-left: 3px solid #3eb0ef;
+  [data-theme=dark] & {
+    border-left: 3px solid $dark-border-color;
+  }
+
+  [data-theme=light] & {
+    border-left: 3px solid $light-border-color;
+  }
   margin: 40px;
   padding: 10px 20px;
 
