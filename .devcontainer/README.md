@@ -18,3 +18,7 @@ To use the devcontainer, you need to have the following installed:
 2. Navigate to the Remote Explorer extension.
 3. Clone this repository in container volume. (Dev Volumes)
 4. Launch the Dev Container.
+
+## Run application
+
+The devcontainer comes with `.vscode\launch.json` and `.vscode\tasks.json` allowing you to run the Hugo website using VSCode debugger. (`F5`).
