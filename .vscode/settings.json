@@ -1,8 +1,8 @@
 {
+    "extensions.ignoreRecommendations": true,
     "files.associations": {
         "**.hcl": "terraform"
     },
-    "extensions.ignoreRecommendations": true,
     "[terraform]": {
         "editor.formatOnSave": true,
         "editor.defaultFormatter": "hashicorp.terraform"
