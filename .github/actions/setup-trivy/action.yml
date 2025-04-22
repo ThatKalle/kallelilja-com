@@ -1,0 +1,21 @@
+name: setup-trivy
+description: Install and Cache Trivy
+
+inputs:
+  trivy-version:
+    description: Version of Trivy to install.
+    required: false
+    default: 'v0.61.1' # https://github.com/aquasecurity/trivy/releases
+  cache:
+    description: Enable caching? Defaults to `true`.
+    required: false
+    default: ${{ true }}
+
+runs:
+  using: "composite"
+  steps:
+    - name: Setup Trivy vulnerability scanner
+      uses: aquasecurity/setup-trivy@9ea583eb67910444b1f64abf338bd2e105a0a93d # v0.2.3
+      with:
+        cache: ${{ inputs.cache }}
+        version: ${{ inputs.trivy-version }}
