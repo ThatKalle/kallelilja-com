@@ -4,15 +4,53 @@ on:
   pull_request:
     paths:
       - '**/*.js'
+      - '**/*.jsx'
+      - '**/*.mjs'
+      - '**/*.es'
+      - '**/*.es6'
+      - '**/*.htm'
+      - '**/*.html'
+      - '**/*.xhtm'
+      - '**/*.xhtml'
+      - '**/*.vue'
+      - '**/*.hbs'
+      - '**/*.ejs'
+      - '**/*.njk'
+      - '**/*.json'
+      - '**/*.yaml'
+      - '**/*.yml'
+      - '**/*.raml'
+      - '**/*.xml'
       - '**/*.ts'
       - '**/*.tsx'
+      - '**/*.mts'
+      - '**/*.cts'
   push:
     branches:
       - main
-    paths: 
+    paths:
       - '**/*.js'
+      - '**/*.jsx'
+      - '**/*.mjs'
+      - '**/*.es'
+      - '**/*.es6'
+      - '**/*.htm'
+      - '**/*.html'
+      - '**/*.xhtm'
+      - '**/*.xhtml'
+      - '**/*.vue'
+      - '**/*.hbs'
+      - '**/*.ejs'
+      - '**/*.njk'
+      - '**/*.json'
+      - '**/*.yaml'
+      - '**/*.yml'
+      - '**/*.raml'
+      - '**/*.xml'
       - '**/*.ts'
       - '**/*.tsx'
+      - '**/*.mts'
+      - '**/*.cts'
   workflow_dispatch:
 
 jobs:
