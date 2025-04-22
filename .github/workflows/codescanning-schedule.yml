@@ -80,7 +80,7 @@ jobs:
           sarif_file: "sarif-results/${{ matrix.language }}.sarif"
 
   trivy:
-    name: Trivy
+    name: Trivy - fs
     runs-on: 'ubuntu-latest'
     permissions:
       contents: read
@@ -110,7 +110,7 @@ jobs:
           format: 'sarif'
           output: 'trivy-results.sarif'
 
-      - name: Upload CodeQL sarif
+      - name: Upload Trivy sarif
         uses: github/codeql-action/upload-sarif@45775bd8235c68ba998cffa5171334d58593da47 # v3.28.15
         with:
           sarif_file: 'trivy-results.sarif'
