@@ -18,13 +18,12 @@ on:
   workflow_dispatch:
 
 jobs:
-  analyze:
-    name: Analyze (actions)
+  codeql-analyze:
+    name: CodeQL - Analyze (actions)
     runs-on: 'ubuntu-latest'
     permissions:
       actions: read
       contents: read
-      packages: read
       security-events: write
 
     steps:
