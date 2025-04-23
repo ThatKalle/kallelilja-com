@@ -5,7 +5,7 @@ inputs:
   hugo-version:
     description: Version of Hugo to install.
     required: false
-    default: '0.146.6' # https://github.com/gohugoio/hugo/releases
+    default: '0.146.7' # https://github.com/gohugoio/hugo/releases
   extended:
     description: Install Hugo extended?
     required: false
