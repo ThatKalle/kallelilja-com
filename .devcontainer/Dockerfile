@@ -1,5 +1,5 @@
 # https://mcr.microsoft.com/en-us/artifact/mar/devcontainers/base/tags
-FROM mcr.microsoft.com/devcontainers/base:bookworm@sha256:eb406d55b2ecd2f8a31d23e4bee50af112d688d169da7457f436f5825c3cef12
+FROM mcr.microsoft.com/devcontainers/base:1.0.21-bookworm@sha256:eb406d55b2ecd2f8a31d23e4bee50af112d688d169da7457f436f5825c3cef12
 
 ARG TFPROVIDERCHECK_VERSION \
     TFPROVIDERCHECK_CHECKSUM \
