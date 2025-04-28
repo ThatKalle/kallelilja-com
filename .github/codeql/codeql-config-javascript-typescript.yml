@@ -9,6 +9,5 @@ packs:
   javascript:
     - githubsecuritylab/codeql-javascript-queries
 
-paths-ignore:
-  - .github/actions
-  - .github/workflows
+paths:
+  - web
