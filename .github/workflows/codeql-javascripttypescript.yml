@@ -75,7 +75,7 @@ jobs:
         with:
           languages: javascript-typescript
           build-mode: none
-          config-file: '.github/codeql-config.yml'
+          config-file: .github/codeql/codeql-config-javascript-typescript.yml
       
       - name: Build with Hugo
         run: |

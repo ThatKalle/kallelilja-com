@@ -35,7 +35,7 @@ jobs:
         with:
           languages: actions
           build-mode: none
-          config-file: '.github/codeql-config.yml'
+          config-file: .github/codeql/codeql-config-actions.yml
 
       - name: Perform CodeQL Analysis
         uses: github/codeql-action/analyze@28deaeda66b76a05916b6923827895f2b14ab387 # v3.28.16

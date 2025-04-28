@@ -1,0 +1,6 @@
+name: "CodeQL configuration - actions"
+
+disable-default-queries: false
+
+queries: 
+  - uses: security-extended

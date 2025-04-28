@@ -1,4 +1,4 @@
-name: "CodeQL configuration"
+name: "CodeQL configuration - javascript-typescript"
 
 disable-default-queries: false
 
@@ -8,3 +8,7 @@ queries:
 packs:
   javascript:
     - githubsecuritylab/codeql-javascript-queries
+
+paths-ignore:
+  - .github/actions
+  - .github/workflows
