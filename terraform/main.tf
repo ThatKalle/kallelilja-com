@@ -84,6 +84,7 @@ resource "github_branch_protection" "branch_protection" {
   required_status_checks {
     strict = true
     contexts = [
+      "Dependency Review",
       "GitHub Actions CI",
       "HUGO CI",
       "Terraform CI",
@@ -202,7 +203,6 @@ resource "github_repository_file" "dependabot_yml" {
     github_issue_label.dependabot_issue_labels["devcontainers_package_manager"],
     github_issue_label.dependabot_issue_labels["docker"],
     github_issue_label.dependabot_issue_labels["github_actions"],
-    github_issue_label.dependabot_issue_labels["terraform"],
-    github_repository_dependabot_security_updates.dependabot_security_updates
+    github_issue_label.dependabot_issue_labels["terraform"]
   ]
 }
