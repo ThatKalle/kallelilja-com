@@ -3,8 +3,8 @@
 	"build": {
 		"dockerfile": "Dockerfile",
 		"args": {
-			"TFPROVIDERCHECK_VERSION": "v1.0.4", // https://github.com/suzuki-shunsuke/tfprovidercheck/releases  tfprovidercheck_linux_amd64.tar.gz
-			"TFPROVIDERCHECK_CHECKSUM": "0adf02dcb8ca9ad07986f880347ebc348a73b850d8b8b8477b7fa5d5147c0b61",
+			"TFPROVIDERCHECK_VERSION": "v1.0.4", // https://github.com/suzuki-shunsuke/tfprovidercheck/releases
+			"TFPROVIDERCHECK_CHECKSUM": "0adf02dcb8ca9ad07986f880347ebc348a73b850d8b8b8477b7fa5d5147c0b61",  // tfprovidercheck_linux_amd64.tar.gz
 			"BATS_VERSION": "v1.11.1", // https://github.com/bats-core/bats-core/releases
 			"BATS_CHECKSUM": "5c57ed9616b78f7fd8c553b9bae3c7c9870119edd727ec17dbd1185c599f79d9"
 		}
@@ -21,7 +21,7 @@
 			"version": "latest"
 		},
 		"ghcr.io/devcontainers/features/hugo:1": {
-			"version": "0.146.7", // https://github.com/gohugoio/hugo/releases
+			"version": "0.147.1", // https://github.com/gohugoio/hugo/releases
 			"extended": true
 		},
 		"ghcr.io/devcontainers/features/terraform:1": {
@@ -30,7 +30,7 @@
 			"terragrunt": "none"
 		},
 		"ghcr.io/dhoeric/features/trivy:1": {
-			"version": "0.61.1" // https://github.com/aquasecurity/trivy/releases
+			"version": "0.62.0" // https://github.com/aquasecurity/trivy/releases
 		},
 		"ghcr.io/marcozac/devcontainer-features/shellcheck:1": {
 			"version": "latest"
@@ -48,7 +48,7 @@
 	"customizations": {
 		"vscode": {
 			"extensions": [
-				"ms-azuretools.vscode-docker",
+				"ms-azuretools.vscode-containers",
 				"GitHub.vscode-github-actions",
 				"HashiCorp.terraform",
 				"rusnasonov.vscode-hugo",
