@@ -164,7 +164,7 @@ locals {
       name        = "docker"
     },
     "github_actions" = {
-      color       = "2088ff"
+      color       = "000000"
       description = "Pull requests that update github_actions code"
       name        = "github_actions"
     },
