@@ -34,7 +34,7 @@ jobs:
           hugo-cachedir: ${{ runner.temp }}/hugo_cache
 
       - name: Initialize CodeQL
-        uses: github/codeql-action/init@60168efe1c415ce0f5521ea06d5c2062adbeed1b # v3.28.17
+        uses: github/codeql-action/init@ff0a06e83cb2de871e5a09832bc6a81e7276941f # v3.28.18
         with:
           languages: ${{ matrix.language }}
           build-mode: ${{ matrix.build-mode }}
@@ -58,7 +58,7 @@ jobs:
           HUGO_PARAMS_gitCommit: 'codeql'
 
       - name: Perform CodeQL Analysis
-        uses: github/codeql-action/analyze@60168efe1c415ce0f5521ea06d5c2062adbeed1b # v3.28.17
+        uses: github/codeql-action/analyze@ff0a06e83cb2de871e5a09832bc6a81e7276941f # v3.28.18
         with:
           category: "/language:${{ matrix.language }}"
           output: sarif-results
@@ -75,7 +75,7 @@ jobs:
           output: "sarif-results/${{ matrix.language }}.sarif"
 
       - name: Upload CodeQL sarif
-        uses: github/codeql-action/upload-sarif@60168efe1c415ce0f5521ea06d5c2062adbeed1b # v3.28.17
+        uses: github/codeql-action/upload-sarif@ff0a06e83cb2de871e5a09832bc6a81e7276941f # v3.28.18
         with:
           sarif_file: "sarif-results/${{ matrix.language }}.sarif"
 
@@ -104,6 +104,6 @@ jobs:
           output: 'trivy-results.sarif'
 
       - name: Upload Trivy sarif
-        uses: github/codeql-action/upload-sarif@60168efe1c415ce0f5521ea06d5c2062adbeed1b # v3.28.17
+        uses: github/codeql-action/upload-sarif@ff0a06e83cb2de871e5a09832bc6a81e7276941f # v3.28.18
         with:
           sarif_file: 'trivy-results.sarif'
