@@ -17,7 +17,7 @@
 	],
 	"features": {
 		// https://containers.dev/features
-		"ghcr.io/devcontainers-extra/features/actionlint:1": {
+		"ghcr.io/devcontainers-extra/features/actionlint:": {
 			"version": "latest"
 		},
 		"ghcr.io/devcontainers/features/hugo:1": {
