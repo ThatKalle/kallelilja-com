@@ -24,7 +24,7 @@
 			"version": "0.147.1", // https://github.com/gohugoio/hugo/releases
 			"extended": true
 		},
-		"ghcr.io/devcontainers/features/terraform:1": {
+		"ghcr.io/devcontainers/features/terraform:": {
 			"version": "1.11.4", // https://github.com/hashicorp/terraform/releases
 			"tflint": "0.56.0", // https://github.com/terraform-linters/tflint/releases
 			"terragrunt": "none"
